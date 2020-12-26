@@ -5,80 +5,29 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { ProtectedRoute } from './protected.route'
+import Login from './components/login';
+import Reset from './components/reset';
+import Chat from './components/chat';
+import Signup from './components/signup';
+import Home from './components/home';
 
-// This site has 3 pages, all of which are rendered
-// dynamically in the browser (not server rendered).
-//
-// Although the page does not ever refresh, notice how
-// React Router keeps the URL up to date as you navigate
-// through the site. This preserves the browser history,
-// making sure things like the back button and bookmarks
-// work properly.
-
-export default function BasicExample() {
+export default () => {
   return (
     <Router>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-        </ul>
-
-        <hr />
-
-        {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
+      <Switch>
+        <ProtectedRoute exact path="/" component={Home} />
+        {/* <ProtectedRoute path="/about" component={About} /> */}
+        <Route path="/login" component={Login} />
+        <Route path="/forgot" component={Reset} />
+        <Route path="/chat" component={Chat} />
+        <Route path='/Signup' component={Signup} />
+        <Route path="*">
+        <img src={process.env.PUBLIC_URL + 'images/login.png'} className="img-fluid w-80" alt="" />
+          No Match
+            </Route>
+      </Switch>
+    </Router >
   );
 }
 
-// You can think of these components as "pages"
-// in your app.
-
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div>
-      <h2>About</h2>
-    </div>
-  );
-}
-
-function Dashboard() {
-  return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
-  );
-}
