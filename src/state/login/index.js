@@ -40,15 +40,16 @@ export const epics = {
 export const initialState = {}
 
 // REDUCERS
-export default function reducer (state = initialState, action) {
+export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOGIN_SUCCESS:
+      sessionStorage.setItem('user', JSON.stringify(action.payload.data))
       return {
         ...state,
-        loadData: action.payload
+        user: action.payload.data
       }
     default:
       return state
   }
 }
-export const getInitData = state => state.login.loadData
+export const getUser = state => state.login.user

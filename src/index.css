@@ -2,3 +2,82 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.section-card {
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 4px;  
+}
+.section-card h5{
+  border-bottom: 0;
+}
+.icon-emonji {
+  width:65px;
+  height:65px;
+  margin-top: 5px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: top center;
+    background-size: 45%;
+}
+.icon-angry {  
+  background-image: url(/images/angry.svg);
+}
+.icon-angry-full {
+  background-image: url(/images/angry-full.svg);
+}
+.icon-emonji::after{
+  position: absolute;
+  top: 38px;
+  text-align: center;
+  left: 20%;
+}
+.icon-angry::after, .icon-angry-full::after{
+  content: 'Angry';  
+}
+.icon-bad {  
+  background-image: url(/images/sad.svg);
+}
+.icon-bad-full {
+  background-image: url(/images/sad-full.svg);
+}
+.icon-bad::after, .icon-bad-full::after{
+  content: 'Sad'; 
+  left: 25%; 
+}
+.icon-ok {  
+  background-image: url(/images/ok.svg);
+}
+.icon-ok-full {
+  background-image: url(/images/ok-full.svg);
+}
+.icon-ok::after, .icon-ok-full::after{
+  content: 'Ok';  
+  left: 35%;
+}
+.icon-happy {  
+  background-image: url(/images/happy.svg);
+}
+.icon-happy-full {
+  background-image: url(/images/happy-full.svg);
+  
+}
+.icon-happy::after, .icon-happy-full::after{
+  content: 'Happy';  
+  left: 15%;
+}
+.icon-great {  
+  background-image: url(/images/great.svg);
+}
+.icon-great-full {
+  background-image: url(/images/great-full.svg);
+}
+.icon-great::after, .icon-great-full::after{
+  content: 'Great';  
+}
+.feedback-content {
+  position: relative;
+  height: calc(100vh - 17rem);
+  padding: 1.4rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

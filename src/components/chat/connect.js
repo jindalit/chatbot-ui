@@ -1,10 +1,16 @@
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { logInRequest } from '../../state/login'
+import { getChat, messageDispatch, getQuestion, fetchQuestion, submitQuestion, getFeedback } from '../../state/chat'
 
-const mapStateToProps = createStructuredSelector({})
+const mapStateToProps = createStructuredSelector({
+    chats: getChat,
+    questionList: getQuestion,
+    getFeedback: getFeedback
+})
 const mapDispatchToProps = dispatch => ({
-    logInRequest: payload => dispatch(logInRequest(payload))
+    fetchQuestion: () => dispatch(fetchQuestion()),
+    messageDispatch: payload => dispatch(messageDispatch(payload)),
+    submitQuestion: payload => dispatch(submitQuestion(payload)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)

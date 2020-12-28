@@ -20,10 +20,10 @@ export default () => {
         {/* <ProtectedRoute path="/about" component={About} /> */}
         <Route path="/login" component={Login} />
         <Route path="/forgot" component={Reset} />
-        <Route path="/chat" component={Chat} />
+        <ProtectedRoute path="/chat" component={Chat} />
         <Route path='/Signup' component={Signup} />
         <Route path="*">
-        <img src={process.env.PUBLIC_URL + 'images/login.png'} className="img-fluid w-80" alt="" />
+          <img src={process.env.PUBLIC_URL + 'images/login.png'} className="img-fluid w-80" alt="" />
           No Match
             </Route>
       </Switch>
