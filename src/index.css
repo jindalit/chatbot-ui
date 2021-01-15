@@ -81,3 +81,8 @@ code {
   overflow-y: scroll;
   overflow-x: hidden;
 }
+.filter-btn {
+  color: #888585 ;
+  border-color: #888585;
+  margin-right: 5px;
+}

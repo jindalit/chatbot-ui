@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
-
-const SideNav = () => {
+const SideNav = (props) => {
+    const { nav } = props
     return (
         <div className="iq-sidebar  sidebar-default ">
             <div className="iq-sidebar-logo d-flex align-items-center justify-content-between">
@@ -16,17 +17,17 @@ const SideNav = () => {
             <div className="data-scrollbar" data-scroll="1">
                 <nav className="iq-sidebar-menu">
                     <ul id="iq-sidebar-toggle" className="iq-menu">
-                        <li className="">
-                            <a href="dashboard.html" className="collapsed">
+                        <li className={nav === 'dashboard' ? 'active' : ''}>
+                            <Link to="/" className="collapsed">
                                 <i className="lab la-buffer"></i><span>Dashboard</span>
-                            </a>
+                            </Link>
 
                         </li>
 
-                        <li className="active">
-                            <a href="chat.html" className="collapsed">
+                        <li className={nav === 'chat' ? 'active' : ''}>
+                            <Link to="/chat" className="collapsed">
                                 <i className="las la-comments"></i><span>Chat</span>
-                            </a>
+                            </Link>
 
                         </li>
 

@@ -26,7 +26,7 @@ export default (props) => {
         props.submitQuiz(questions)
     }
     return (<div className='ml-2'>
-        <h3 className='text-center text-primary mt-2 mb-3'>Share your feedback</h3>
+        {/* <h3 className='text-center text-primary mt-2 mb-3'>Share your feedback</h3> */}
         <div className=' feedback-content scroller'>
             {questionList &&
                 questionList.map(item => (<div>

@@ -1,9 +1,9 @@
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { initLoadData, getInitData } from '../../state/home'
+import { initLoadData, getPulseScore } from '../../state/dashboard'
 
 export const mapStateToProps = createStructuredSelector({
-    getInitData: getInitData
+    pulseScore: getPulseScore
 })
 
 const mapDispatchToProps = dispatch => ({

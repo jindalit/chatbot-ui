@@ -5,7 +5,7 @@ const Login = (props) => {
     const [formDate, setFormData] = useState({})
     useEffect(() => {
         if (props.user) {
-            props.history.push("/chat");
+            props.history.push("/");
         }
     }, [props.user])
     const myChangeHandler = (event) => {

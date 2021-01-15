@@ -1,0 +1,100 @@
+.card-title span {
+    margin-left: 185px;
+    font-size: 22px;
+    color: lightgray
+}
+.pulseCard {
+    width:110px;
+    min-height: 160px;
+    border: 1px solid;
+    border-radius: 5px;
+    position: relative;
+}
+.emonji {
+    position: absolute;
+    left: 30%;
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    display: inline-block;
+}
+.wave {
+    width:100%;
+    display: inline-block;
+    position: absolute;
+    bottom:0px;
+    height: 50px;
+    transition: height .7s ease-out
+}
+.strongly-disagree {
+    border-color: #D80000;    
+}
+.strongly-disagree span.emonji {
+    background-image: url(/images/angry-full.svg);
+}
+.strongly-disagree span.wave {
+    background-image: url(/images/angry-wave.png);
+}
+.disagree {
+    border-color: #FF5607;    
+}
+.disagree span {
+    background-image: url(/images/sad-full.svg);
+}
+.disagree span.wave {
+    background-image: url(/images/sad-wave.png);
+}
+.somewhat-disagree {
+    border-color: #FF9800;    
+}
+.somewhat-disagree span {
+    background-image: url(/images/ok-full.svg);
+}
+.somewhat-disagree span.wave {
+    background-image: url(/images/ok-wave.png);
+}
+.somewhat-agree {
+    border-color: #FFC100;    
+}
+.somewhat-agree span {
+    background-image: url(/images/happy-full.svg);
+}
+.somewhat-agree span.wave {
+    background-image: url(/images/happy-wave.png);
+}
+.agree {
+    border-color:#c5d647;    
+}
+.agree span {
+    background-image: url(/images/great-full.svg);
+}
+.agree span.wave {
+    background-image: url(/images/great-wave.png);
+}
+.strongly-agree {
+    border-color: #79c267;    
+}
+.strongly-agree span {
+    background-image: url(/images/strongly-agree.svg);
+}
+.strongly-agree span.wave {
+    background-image: url(/images/strongly-agree-wave.png);
+}
+.pulseText {
+    text-align: center;
+}
+.barChart {
+    width: 100%;
+}
+.newset {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    margin-left: 7px;
+}.newset1 {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 7px;
+    text-align: center;
+}

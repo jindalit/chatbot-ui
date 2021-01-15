@@ -28,7 +28,7 @@ const Chat = (props) => {
         props.messageDispatch(message)
     }
     return (<div className="wrapper" >
-        <SideNav />
+        <SideNav nav='chat' />
         <Header />
         <div className="content-page">
             <div className="container-fluid">

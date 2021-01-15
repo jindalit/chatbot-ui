@@ -28,7 +28,7 @@ export default (props) => {
                             <i class="ri-notification-line bg-danger p-2 rounded-small" style={{ fontSize: '40px', marginTop: '9px' }}></i>
                         </div>
                         <div class="chat-sidebar-name ml-3">
-                            <h5 class="mb-0">Apply for Attendance</h5>
+                            <h5 class="mb-0">Apply for Leaves</h5>
                             <h5 className='text-secondary'>Apply in one click!!!</h5>
                         </div>
                     </div>
@@ -41,8 +41,8 @@ export default (props) => {
                             <i class="ri-questionnaire-line  bg-yellow p-2 rounded-small" style={{ fontSize: '40px', marginTop: '9px' }}></i>
                         </div>
                         <div class="chat-sidebar-name ml-3">
-                            <h5 class="mb-0">My Question for today</h5>
-                            <h5 className='text-secondary'>Submit you answer here</h5>
+                            <h5 class="mb-0">My Questions for today</h5>
+                            <h5 className='text-secondary'>Submit you answers here</h5>
                         </div>
                     </div>
                 </a>
