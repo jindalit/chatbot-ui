@@ -1,7 +1,8 @@
 import React from 'react'
 
 
-export default () => {
+export default (props) => {
+    const { getGenderWise } = props
     return (
         <div className="card" style={{ float: 'left', width: '100%', height: '400px', backgroundColor: '#ffffff' }}>
             <div className="card-header d-flex justify-content-between">
@@ -9,8 +10,29 @@ export default () => {
                     <h6 className="card-title">Gender Wise View
             </h6>
                 </div>
-            </div>
 
+            </div>
+            <div className="card-body">
+                <div className="gender-section">
+                    <img src={process.env.PUBLIC_URL + "images/man.PNG"} />
+                    {getGenderWise.MaleGender && <div>
+                        {getGenderWise.MaleGender.mood}<br />Mood<br /><br />
+                        {getGenderWise.MaleGender.progress}%<br /><br />
+                        Critical Employee<br />
+                        {getGenderWise.MaleGender.criticalEmployee}
+                    </div>
+                    }
+                    <img src={process.env.PUBLIC_URL + "images/woman.PNG"} />
+                    {getGenderWise.FemaleGender && <div>
+                        {getGenderWise.FemaleGender.mood}<br />Mood<br /><br />
+                        {getGenderWise.FemaleGender.progress}%<br /><br />
+                        Critical Employee<br />
+                        {getGenderWise.FemaleGender.criticalEmployee}
+                    </div>
+                    }
+
+                </div>
+            </div>
         </div>
     )
 }

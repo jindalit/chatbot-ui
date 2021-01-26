@@ -16,6 +16,8 @@ const FLIGHT_RISK_ANALYSIS = 'FLIGHT_RISK_ANALYSIS'
 const FLIGHT_RISK_ANALYSIS_SUCCESS = 'FLIGHT_RISK_ANALYSIS_SUCCESS'
 const UNIT_PULSE = 'UNIT_PULSE'
 const UNIT_PULSE_SUCCESS = 'UNIT_PULSE_SUCCESS'
+const GENDER_WISE = 'GENDER_WISE'
+const GENDER_WISE_SUCCESS = 'GENDER_WISE_SUCCESS'
 
 //Actions
 
@@ -30,6 +32,8 @@ export const flightRisk = () => ({ type: FLIGHT_RISK_ANALYSIS })
 export const flightRiskSucess = payload => ({ payload, type: FLIGHT_RISK_ANALYSIS_SUCCESS })
 export const unitPulse = (payload) => ({ payload, type: UNIT_PULSE })
 export const unitPulseSucess = payload => ({ payload, type: UNIT_PULSE_SUCCESS })
+export const genderWise = (payload) => ({ payload, type: GENDER_WISE })
+export const genderWiseSucess = payload => ({ payload, type: GENDER_WISE_SUCCESS })
 
 export const epics = {
     assaciatesResponse: (action$, state$) => action$.pipe(
@@ -43,6 +47,22 @@ export const epics = {
                 })
             ).pipe(
                 map(({ data }) => assaciatesResponseSucess(data))
+                ,
+                catchError(error => of(console.error(error)))
+            )
+        })
+    ),
+    genderWise: (action$, state$) => action$.pipe(
+        ofType(GENDER_WISE),
+        switchMap(() => {
+            return from(
+                axios.get(Services.baseUrl + Services.genderWise, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            ).pipe(
+                map(({ data }) => genderWiseSucess(data))
                 ,
                 catchError(error => of(console.error(error)))
             )
@@ -82,7 +102,7 @@ export const epics = {
     initLoadData: (action$, state$) => action$.pipe(
         ofType(INIT_LOAD),
         switchMap(() => {
-            return [assaciatesResponse(), flightRisk(), pulseScore(), companyMood(), unitPulse({ type: 'unitPulseView' })]
+            return [assaciatesResponse(), flightRisk(), pulseScore(), companyMood(), genderWise(), unitPulse({ type: 'unitPulseView' })]
         })
     ),
     pulseScore: (action$, state$) => action$.pipe(
@@ -124,7 +144,8 @@ export const initialState = {
     pulseScore: [],
     mood: {},
     flightRisk: {},
-    unitPulses: {}
+    unitPulses: {},
+    genderWise: {}
 }
 
 // REDUCERS
@@ -139,6 +160,11 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 flightRisk: action.payload.flightRiskAnalysis
+            }
+        case GENDER_WISE_SUCCESS:
+            return {
+                ...state,
+                genderWise: action.payload.GenderWiseView
             }
         case PULSE_SCORE_SUCCESS:
             return {
@@ -169,6 +195,7 @@ export default function reducer(state = initialState, action) {
 }
 export const getPulseScore = state => state.home.pulseScore
 export const getCompanyMood = state => state.home.mood
+export const getGenderWise = state => state.home.genderWise
 export const getAssaciatesResponse = state => state.home.assaciatesResponse
 export const getFlightRisk = state => state.home.flightRisk
 export const getUnitPulse = state => state.home.unitPulses

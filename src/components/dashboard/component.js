@@ -52,7 +52,7 @@ export default (props) => {
                             <UnitPulse unitPulse={props.getUnitPulse} employeeExperienceView={props.getEmployeeExperienceView} updatePulseType={updatePulseType} />
                         </div>
                         <div className='col-sm-6 col-lg-3 pr-1'>
-                            <GenderView />
+                            <GenderView getGenderWise={props.getGenderWise} />
                         </div>
                         <div className='col-sm-6 col-lg-3 pr-1'>
                             <WordCloud />

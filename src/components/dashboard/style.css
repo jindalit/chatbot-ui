@@ -465,3 +465,17 @@
   .lgf-progress.width-20 .lgf-progress-text span {
     font-size: 0.5rem !important;
   }
+  
+.gender-section {
+  margin:60px 0px;
+  display: flex;
+  font-size: 13px;
+  text-align: center;
+  font-weight: bold;
+  color: #FF9800;
+  align-items: center;
+  justify-content: center;
+}
+.gender-section img {
+  height: 70px;
+}

@@ -7,6 +7,7 @@ export default {
   submitQuestion: 'survey/submitSurvey',
   pulseScore: 'dashbord/getCompanyPulseScoreView',
   companyMood: 'dashbord/getOverallCompanyMood',
+  genderWise: 'dashbord/getGenderWiseView',
   associateResponseView: 'dashbord/getAssociateResponseView',
   flightRiskAnalysis: 'dashbord/getFlightRiskAnalysis',
   chatQuestion: 'chat/searchQuestions',

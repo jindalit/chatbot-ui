@@ -1,7 +1,7 @@
 import { get } from 'lodash'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { initLoadData, unitPulse, getPulseScore, getCompanyMood, getAssaciatesResponse, getFlightRisk, getUnitPulse, getEmployeeExperienceView } from '../../state/dashboard'
+import { initLoadData, unitPulse, getGenderWise, getPulseScore, getCompanyMood, getAssaciatesResponse, getFlightRisk, getUnitPulse, getEmployeeExperienceView } from '../../state/dashboard'
 
 export const mapStateToProps = createStructuredSelector({
     pulseScore: getPulseScore,
@@ -9,6 +9,7 @@ export const mapStateToProps = createStructuredSelector({
     assaciatesResponse: getAssaciatesResponse,
     flightRisk: getFlightRisk,
     getUnitPulse: getUnitPulse,
+    getGenderWise: getGenderWise,
     getEmployeeExperienceView: getEmployeeExperienceView
 })
 
