@@ -8,18 +8,8 @@ const data01 = [
     { name: 'Group A', value: 400, v: 89 },
     { name: 'Group B', value: 150, v: 100 }
 ];
-const renderLabelContent = (props) => {
-    const { value, x, y, midAngle } = props;
-
-    return (
-        <g transform={`translate(${x}, ${y})`} textAnchor={(midAngle < -90 || midAngle >= 90) ? 'end' : 'start'}>
-            <text x={0} y={0}>{`Count: ${value}`}</text>
-        </g>
-    );
-};
 const colors = ['#D80000', '#FF9800']
 export default (props) => {
-    const [activeIndex, setActiveIndex] = useState(0)
 
     return (
         <div className="card">
@@ -46,7 +36,7 @@ export default (props) => {
                             ))
                         }
                         <Label width={50} position="center" style={{ fontWeight: 'bold', fontSize: '1.4em' }}>
-                            4.2
+                            {props.companyMood && props.companyMood.overAllMood}
                         </Label>
                     </Pie>
                     <Tooltip />

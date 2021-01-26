@@ -5,5 +5,13 @@ export default {
   chat: 'chat/track',
   questionList: 'survey/getSurveyQuestionList',
   submitQuestion: 'survey/submitSurvey',
-  pulseScore: 'dashbord/getCompanyPulseScoreView'
+  pulseScore: 'dashbord/getCompanyPulseScoreView',
+  companyMood: 'dashbord/getOverallCompanyMood',
+  associateResponseView: 'dashbord/getAssociateResponseView',
+  flightRiskAnalysis: 'dashbord/getFlightRiskAnalysis',
+  chatQuestion: 'chat/searchQuestions',
+  unitPulseView: 'dashbord/getUnitPulseView',
+  enterpriseEmployeeRisk: 'dashbord/getEnterpriseEmployeeRisk',
+  gradeWiseHighFlightRisk: 'dashbord/getGradeWiseHighFlightRisk',
+  businessUnitWiseHighFlightRisk: 'dashbord/getBusinessUnitWiseHighFlightRisk'
 }

@@ -1,27 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     PieChart, Pie, Cell, Label, Tooltip
 } from 'recharts';
 
 
-const data01 = [
-    { name: 'No Risk', value: 70, v: 100 },
-    { name: 'Medium Risk', value: 50, v: 100 },
-    { name: 'High Risk', value: 15, v: 89 },
-];
-const renderLabelContent = (props) => {
-    const { value, x, y, midAngle } = props;
-
-    return (
-        <g transform={`translate(${x}, ${y})`} textAnchor={(midAngle < -90 || midAngle >= 90) ? 'end' : 'start'}>
-            <text x={0} y={0}>{`Count: ${value}`}</text>
-        </g>
-    );
-};
-const colors = ['#79c267', '#D80000', '#FF9800']
+let datanew = []
+const colors = ['#D80000', '#FF9800', '#79c267']
 export default (props) => {
-    const [activeIndex, setActiveIndex] = useState(0)
-
+    const { flightRisk } = props
+    const [data, setData] = useState([])
+    useEffect(() => {
+        if (flightRisk) {
+            datanew = []
+            for (var key in flightRisk) {
+                if (key !== 'associates') {
+                    datanew.push(
+                        {
+                            name: key.toUpperCase(),
+                            value: flightRisk[key]
+                        })
+                }
+            }
+            setData(datanew)
+        }
+    }, [flightRisk])
     return (
         <div className="card">
             <div className="card-header d-flex justify-content-between">
@@ -30,34 +32,38 @@ export default (props) => {
                     </h6>
                 </div>
             </div>
-            <div className="card-body">
-                <PieChart width={160} height={160}>
-                    <Pie
-                        data={data01}
-                        dataKey="value"
-                        startAngle={110}
-                        endAngle={-250}
-                        innerRadius={60}
-                        outerRadius={80}
-                        isAnimationActive={true}
-                    >
-                        {
-                            data01.map((entry, index) => (
-                                <Cell key={`slice-${index}`} fill={colors[index]} />
-                            ))
-                        }
-                        <Label width={50} position="center" style={{ fontWeight: 'bold', fontSize: '1.4em' }}>
-                            4.2
-                        </Label>
-                    </Pie>
-                    <Tooltip />
-                </PieChart>
-            </div>
-            <div class="progress-value">
-                <span class="newset">15 <br /> High Risk</span>
-                <span class="newset">50 <br /> Medium Risk</span>
-                <span class="newset">70 <br /> No Risk</span>
-            </div>
+            {data.length !== 0 &&
+                <div className="card-body">
+                    <PieChart width={160} height={160}>
+                        <Pie
+                            data={data}
+                            dataKey="value"
+                            startAngle={110}
+                            endAngle={-250}
+                            innerRadius={60}
+                            outerRadius={80}
+                            isAnimationActive={true}
+                        >
+                            {
+                                data.map((entry, index) => (
+                                    <Cell key={`slice-${index}`} fill={colors[index]} />
+                                ))
+                            }
+                            <Label width={50} position="center" style={{ fontWeight: 'bold', fontSize: '1.5em', }}>
+                                {data[0].value}
+                            </Label>
+                        </Pie>
+                        <Tooltip />
+                    </PieChart>
+                </div>
+            }
+            {data.length !== 0 &&
+                <div class="progress-value">
+                    <span class="newset"><span style={{ color: colors[0] }}>{data[0].value}</span><span style={{ color: colors[0] }}><br /> High Risk</span></span>
+                    <span class="newset"><span style={{ color: colors[1] }}>{data[1].value}</span> <span style={{ color: colors[1] }}><br /> Medium Risk</span></span>
+                    <span class="newset"><span style={{ color: colors[2] }}>{data[2].value}</span>  <span style={{ color: colors[2] }}><br />No Risk</span></span>
+                </div>
+            }
         </div >
     )
 }

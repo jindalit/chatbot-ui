@@ -16,6 +16,11 @@ export default (props) => {
     useEffect(() => {
         props.initLoadData()
     }, [])
+    const updatePulseType = data => {
+        props.unitPulse({
+            type: data
+        })
+    }
 
     return (
         <div className="wrapper" >
@@ -31,26 +36,23 @@ export default (props) => {
                             <EmployeePulse pulseScore={props.pulseScore} />
                         </div>
                         <div className="col-sm-6 col-lg-2 pr-1 pl-1">
-                            <CompanyMood />
+                            <CompanyMood companyMood={props.companyMood} />
                         </div>
                         <div className="col-sm-6 col-lg-2 pr-1 pl-1">
-                            <FlightRiskAnalysis />
+                            <FlightRiskAnalysis flightRisk={props.flightRisk} />
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-sm-12 col-lg-6 pr-1">
-                            <AssociatesResponseRate />
-                        </div>
-                        <div className="col-sm-12 col-lg-6 pr-1">
-                            <UnitPulse />
+                        <div className="col-sm-12 col-lg-12 pr-1">
+                            <AssociatesResponseRate assaciatesResponse={props.assaciatesResponse} />
                         </div>
                     </div>
                     <div className='row'>
+                        <div className="col-sm-12 col-lg-6 pr-1">
+                            <UnitPulse unitPulse={props.getUnitPulse} employeeExperienceView={props.getEmployeeExperienceView} updatePulseType={updatePulseType} />
+                        </div>
                         <div className='col-sm-6 col-lg-3 pr-1'>
                             <GenderView />
-                        </div>
-                        <div className='col-sm-6 col-lg-6 pr-1'>
-                            <EmployeeView />
                         </div>
                         <div className='col-sm-6 col-lg-3 pr-1'>
                             <WordCloud />

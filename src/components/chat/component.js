@@ -8,7 +8,7 @@ import AttendanceSection from './attendance-section'
 import QuestionSection from './question-section'
 
 const Chat = (props) => {
-    const { chats, questionList } = props
+    const { chats, questionList, suggestionList } = props
     const [sectionName, setSectionName] = useState('chat')
     useEffect(() => {
         props.fetchQuestion()
@@ -26,6 +26,9 @@ const Chat = (props) => {
     }
     const sendMessage = message => {
         props.messageDispatch(message)
+    }
+    const searchQuestion = message => {
+        props.searchDispatch(message)
     }
     return (<div className="wrapper" >
         <SideNav nav='chat' />
@@ -47,7 +50,7 @@ const Chat = (props) => {
                                         <div className='col-lg-8 chat-data p-0 chat-data-right'>
                                             <div class="tab-content h-100">
                                                 {
-                                                    sectionName === 'chat' ? <ChatSection chats={chats} sendMessage={sendMessage} />
+                                                    sectionName === 'chat' ? <ChatSection chats={chats} sendMessage={sendMessage} questions={suggestionList} searchQuestion={searchQuestion} />
                                                         : sectionName === 'question' ? <QuestionSection questionList={questionList} submitQuiz={submitQuiz} />
                                                             : <AttendanceSection />
                                                 }

@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
-import { map } from 'lodash'
+import React, { useState, useEffect } from 'react'
 
 export default (props) => {
     const [message, setMessage] = useState('')
+    const [showMenu, setShowMenu] = useState(false)
+    useEffect(() => {
+        var objDiv = document.querySelector(".chat-content");
+        objDiv.scrollTop = (objDiv.scrollHeight);
+    }, [props.chats])
     const chats = sessionStorage.getItem('chats') ? JSON.parse(sessionStorage.getItem('chats')) : []
     const handleSend = (event) => {
         event.currentTarget.previousElementSibling.focus()
@@ -10,15 +14,27 @@ export default (props) => {
         setMessage('')
         event.currentTarget.previousElementSibling.value = ''
         props.sendMessage(msgTxt)
+
+    }
+    const handleMenuClick = (event) => {
+        const text = event.target.innerText
+        document.querySelector('#chatTextBox').value = text
+        setMessage(text)
+        setShowMenu(false)
     }
     const handleChange = (event) => {
+        const msgTxt = event.currentTarget.value
         if (event.keyCode === 13) {
-            const msgTxt = event.currentTarget.value
             setMessage('')
+            setShowMenu(false)
             event.currentTarget.value = ''
             event.currentTarget.focus()
             props.sendMessage(msgTxt)
             return
+        }
+        if (msgTxt.length > 4) {
+            props.searchQuestion({ searchKey: msgTxt })
+            setShowMenu(true)
         }
         setMessage(event.currentTarget.value)
     }
@@ -72,10 +88,17 @@ export default (props) => {
             </div>
 
             <div className="chat-footer p-3 bg-white d-flex align-items-center">
-                <input type="text" className="form-control mr-3 msg-textbox" placeholder="Type your message" onKeyUp={handleChange} />
+                <input type="text" id='chatTextBox' className="form-control mr-3 msg-textbox" placeholder="Type your message" onKeyUp={handleChange} />
                 <button type="submit" className="btn btn-primary d-flex align-items-center p-2" onClick={handleSend}><i
                     className="fa fa-paper-plane mr-0" aria-hidden="true"></i><span
                         className="d-none d-lg-block ml-1">Send</span></button>
+                <div className={"dropdown-menu " + (showMenu ? 'show' : '')} onClick={handleMenuClick}>
+                    {
+                        props.questions && props.questions.map(item => {
+                            return <a class="dropdown-item">{item.question}</a>
+                        })
+                    }
+                </div>
             </div>
         </div>
     </React.Fragment >)
