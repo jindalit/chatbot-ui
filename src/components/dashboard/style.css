@@ -193,6 +193,9 @@
     background-color: #f3cfcb;
     font-family: 'Oswald', sans-serif;
   }
+  .emp-card-1.card .recharts-wrapper, .emp-card-2.card .recharts-wrapper {
+    margin: 0 auto
+  }
   .emp-card-2.card {
     background-color: #f1e9ce;
     font-family: 'Oswald', sans-serif;
@@ -478,4 +481,12 @@
 }
 .gender-section img {
   height: 70px;
+}
+.predictor-type li {
+  cursor: pointer;
+  padding:2px 1px;
+}
+.predictor-type li.active {
+  background:#f3cfcb;
+  color:blue;
 }
