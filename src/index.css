@@ -94,6 +94,9 @@ code {
 .dropdown-menu a:hover {
   color: blue ;
   cursor: pointer;
-}.navlink a.active button {
-  color:blue
+}.navlink a.active button, .employee-level p.active {
+  color:blue;
+  cursor: pointer;
+}.employee-level p{
+  cursor: pointer;
 }

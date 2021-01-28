@@ -2,7 +2,7 @@ import { prop } from 'lodash/fp'
 import React, { useEffect } from 'react'
 import SideNav from '../common/sideNav'
 import Header from '../common/header'
-import Filters from './filter-section'
+import Filters from '../common/filter-section'
 import EmployeePulse from './employee-pulse'
 import CompanyMood from './company-mood'
 import FlightRiskAnalysis from './flight-risk-analysis'
@@ -21,7 +21,9 @@ export default (props) => {
             type: data
         })
     }
-
+    const filterData = data => {
+        props.initLoadData(data)
+    }
     return (
         <div className="wrapper" >
             <SideNav nav='dashboard' />
@@ -29,7 +31,12 @@ export default (props) => {
             <div className="content-page">
                 <div className="container-fluid">
                     <div className="row">
-                        <Filters />
+                        <div className="col-lg-12 mb-3">
+                            <div className="d-flex justify-content-between px-3 py-0 m-1" style={{ width: '100%' }}>
+                                <h3 className="mb-0" style={{ fontWeight: 'bold' }}>Company Pulse Score View</h3>
+                                <Filters filterData={filterData} />
+                            </div>
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-sm-12 col-lg-8 pr-1">

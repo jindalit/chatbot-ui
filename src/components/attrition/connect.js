@@ -1,15 +1,15 @@
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
-import { getEmployeeRisk, getHighFlightRisk, highFlightRisk, employeeRisk, businessUnit, getBusinessUnit } from '../../state/attrition'
+import { getEmployeeRisk, getHighFlightRisk, getEmployeeCovered, getBusinessUnit, getCriticalEmployee, initLoadData } from '../../state/attrition'
 const mapStateToProps = createStructuredSelector({
     getEmployeeRisk: getEmployeeRisk,
     getBusinessUnit: getBusinessUnit,
-    getHighFlightRisk: getHighFlightRisk
+    gradeWise: getHighFlightRisk,
+    getEmployeeCovered: getEmployeeCovered,
+    getCriticalEmployee: getCriticalEmployee
 })
 const mapDispatchToProps = dispatch => ({
-    employeeRisk: () => dispatch(employeeRisk()),
-    highFlightRisk: () => dispatch(highFlightRisk()),
-    businessUnit: () => dispatch(businessUnit())
+    initLoadData: () => dispatch(initLoadData())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)

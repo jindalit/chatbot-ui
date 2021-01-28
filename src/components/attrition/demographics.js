@@ -225,7 +225,7 @@ export default (props) => {
                                 <div className="card-body d-flex h-100 text-center px-4 pt-3 pb-1">
                                     <div className="col-4">
                                         <div className="critical-emp-div-1 text-right">
-                                            <b>{employeeRisk.flightHighRisk && employeeRisk.flightHighRisk.highRiskPercentage}%</b>
+                                            <b>{employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage}%</b>
                                             <p>Critical Employee</p>
                                         </div>
                                     </div>
@@ -250,7 +250,7 @@ export default (props) => {
                                     </div>
                                     <div className="col-4">
                                         <div className="critical-emp-div-2 text-left">
-                                            <b>{employeeRisk.flightMediumRisk && employeeRisk.flightMediumRisk.mediumRiskPercentage}%</b>
+                                            <b>{employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage}%</b>
                                             <p>Critical Employee</p>
                                         </div>
                                     </div>
@@ -263,7 +263,7 @@ export default (props) => {
                                         <ul className="px-3">
                                             <li className="d-flex align-items-center pb-3 border-bottom">
                                                 <div className="profile-icon iq-icon-box rounded-small text-center">
-                                                    <div className="lgf-progress lgf-progress-small" data-percentage={employeeRisk.flightHighRisk && Math.ceil(employeeRisk.flightHighRisk.highRiskPercentage / 10) * 10}>
+                                                    <div className="lgf-progress lgf-progress-small" data-percentage={employeeRisk.MaleGenderCritical && Math.ceil(employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage / 10) * 10}>
                                                         <span className="lgf-progress-left">
                                                             <span className="lgf-progress-bar lgf-progress--blue">
                                                             </span>
@@ -274,14 +274,14 @@ export default (props) => {
                                                         </span>
                                                         <div className="lgf-progress-value">
                                                             <div className="lgf-progress-text">
-                                                                <h6>{employeeRisk.flightHighRisk && employeeRisk.flightHighRisk.highRiskPercentage}%</h6>
+                                                                <h6>{employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage}%</h6>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="emp-loader-text">
                                                     <b>
-                                                        {employeeRisk.flightHighRisk && employeeRisk.flightHighRisk.highRiskPercentage}% Grade 1 Employees are at high risk, You need to focus on {employeeRisk.flightHighRisk && employeeRisk.flightHighRisk.totalHighRiskEmployee} Employees on priority basis.
+                                                        {employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage}% Male Employees are at high risk, You need to focus on {employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.totalMaleCriticalHighRiskEmp} Employees on priority basis.
                               </b>
                                                     <div className="pt-2">
                                                         <a href="#">Click here to view</a>
@@ -291,7 +291,7 @@ export default (props) => {
 
                                             <li className="d-flex align-items-center py-3">
                                                 <div className="profile-icon iq-icon-box rounded-small text-center">
-                                                    <div className="lgf-progress lgf-progress-small" data-percentage={employeeRisk.flightMediumRisk && Math.ceil(employeeRisk.flightMediumRisk.mediumRiskPercentage / 10) * 10}>
+                                                    <div className="lgf-progress lgf-progress-small" data-percentage={employeeRisk.femaleGenderCritical && Math.ceil(employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage / 10) * 10}>
                                                         <span className="lgf-progress-left">
                                                             <span className="lgf-progress-bar lgf-progress--orange">
                                                             </span>
@@ -302,14 +302,14 @@ export default (props) => {
                                                         </span>
                                                         <div className="lgf-progress-value">
                                                             <div className="lgf-progress-text">
-                                                                <h6>{employeeRisk.flightMediumRisk && employeeRisk.flightMediumRisk.mediumRiskPercentage}%</h6>
+                                                                <h6>{employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage}%</h6>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div className="emp-loader-text">
                                                     <b>
-                                                        {employeeRisk.flightMediumRisk && employeeRisk.flightMediumRisk.mediumRiskPercentage}% Grade 2 Employees are at high risk, You need to focus on {employeeRisk.flightMediumRisk && employeeRisk.flightMediumRisk.totalMediumRiskEmployee} Employees on priority basis.
+                                                        {employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage}% Female Employees are at high risk, You need to focus on {employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.totalFemaleCriticalHighRiskEmp} Employees on priority basis.
                               </b>
                                                     <div className="pt-2">
                                                         <a href="#">Click here to view</a>

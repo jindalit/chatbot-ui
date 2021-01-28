@@ -4,18 +4,23 @@ import {
     XAxis, YAxis, Tooltip, ResponsiveContainer
 } from 'recharts';
 
-
+const unitName = {
+    'buA': 'BFSI',
+    'buB': 'Manufacturing',
+    'buC': 'Energy',
+    'buD': 'Life Sciences'
+}
 let data = []
 export default (props) => {
     const [pulseData, setPulseData] = useState([])
     const [type, setType] = useState('Unit Pulses View')
-    const [leftMargin, setLeftMargin] = useState(20)
+    const [leftMargin, setLeftMargin] = useState(70)
     useEffect(() => {
         const { unitPulse } = props
         data = []
         for (var key in unitPulse) {
             if (key !== 'totalAssociates' && key !== 'totalBusinesUnit') {
-                data.push({ ...unitPulse[key], name: key })
+                data.push({ ...unitPulse[key], name: unitName[key] })
             }
         }
         setPulseData(data)
@@ -35,7 +40,7 @@ export default (props) => {
     const changeType = e => {
         setType(e.target.value)
         if (e.target.value === 'Unit Pulses View') {
-            setLeftMargin(20)
+            setLeftMargin(70)
             props.updatePulseType('unitPulseView')
         } else {
             setLeftMargin(180)

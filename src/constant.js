@@ -12,7 +12,9 @@ export default {
   flightRiskAnalysis: 'dashbord/getFlightRiskAnalysis',
   chatQuestion: 'chat/searchQuestions',
   unitPulseView: 'dashbord/getUnitPulseView',
+  riskAnalysisEmployeeCover: 'dashbord/getRiskAnalysisEmployeeCover',
   enterpriseEmployeeRisk: 'dashbord/getEnterpriseEmployeeRisk',
   gradeWiseHighFlightRisk: 'dashbord/getGradeWiseHighFlightRisk',
-  businessUnitWiseHighFlightRisk: 'dashbord/getBusinessUnitWiseHighFlightRisk'
+  businessUnitWiseHighFlightRisk: 'dashbord/getBusinessUnitWiseHighFlightRisk',
+  criticalEmployeeHighRisk: 'dashbord/getCriticalEmployeeHighRisk'
 }

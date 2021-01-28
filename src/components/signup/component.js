@@ -24,7 +24,6 @@ const Signup = props => {
         setFormData({ ...formData, [nam]: val });
     }
     const validation = () => {
-        debugger
         let retVal = true
         for (let key in formData) {
             if (key !== 'mName' && formData[key] === '') {
