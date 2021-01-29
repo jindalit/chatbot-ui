@@ -10,10 +10,18 @@ const unitName = {
     'buC': 'Energy',
     'buD': 'Life Sciences'
 }
+const empName = {
+    'employeeRole': 'Employee Role',
+    'teamWork': 'Team Work',
+    'totalRewards': 'Total Rewards',
+    'learningAndDevelopment': 'Learning &Development',
+    'performanceManagement': 'Performance Management',
+    'managerCommunication': 'Manager Communication'
+}
 let data = []
 export default (props) => {
     const [pulseData, setPulseData] = useState([])
-    const [type, setType] = useState('Unit Pulses View')
+    const [type, setType] = useState('Unit Pulse View')
     const [leftMargin, setLeftMargin] = useState(70)
     useEffect(() => {
         const { unitPulse } = props
@@ -32,18 +40,18 @@ export default (props) => {
         data = []
         for (var key in employeeExperienceView) {
             if (key !== 'totalAssociates' && key !== 'totalBusinesUnit') {
-                data.push({ ...employeeExperienceView[key], name: key })
+                data.push({ ...employeeExperienceView[key], name: empName[key] })
             }
         }
         setPulseData(data)
     }, [props.employeeExperienceView])
     const changeType = e => {
         setType(e.target.value)
-        if (e.target.value === 'Unit Pulses View') {
+        if (e.target.value === 'Unit Pulse View') {
             setLeftMargin(70)
             props.updatePulseType('unitPulseView')
         } else {
-            setLeftMargin(180)
+            setLeftMargin(120)
             props.updatePulseType('EmployeeExperienceView')
         }
     }
@@ -55,8 +63,8 @@ export default (props) => {
                 </div>
                 <div>
                     <select className='form-control' onChange={e => changeType(e)}>
-                        <option>Unit Pulses View</option>
-                        <option>Employee Experiance View</option>
+                        <option>Unit Pulse View</option>
+                        <option>Employee Experience View</option>
                     </select>
                 </div>
             </div>

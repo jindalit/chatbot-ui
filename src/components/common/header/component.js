@@ -14,8 +14,7 @@ const Header = (props) => {
                 <div className="iq-navbar-logo d-flex align-items-center justify-content-between">
                     <i className="ri-menu-line wrapper-menu"></i>
                     <Link to="/" className="header-logo">
-                        <img src={process.env.PUBLIC_URL + "images/logo.png"} className="img-fluid rounded-normal light-logo" alt="logo" />
-                        <img src={process.env.PUBLIC_URL + "images/logo-white.png"} className="img-fluid rounded-normal darkmode-logo" alt="logo" />
+                        <img src={process.env.PUBLIC_URL + "images/logo.jpg"} className="img-fluid rounded-normal light-logo" alt="logo" />
 
                     </Link>
                 </div>

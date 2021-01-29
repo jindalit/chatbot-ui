@@ -77,9 +77,7 @@ export default (props) => {
                                         </div>
                                     </div>
 
-                                    <div className="p-2">
-                                        <a className="small" href="#">Click here to view</a>
-                                    </div>
+
                                     <div className="emp-card-text">
                                         <div className="emp-card-description pt-3">
                                             <ul className="px-3">
@@ -105,9 +103,7 @@ export default (props) => {
                                                         <b>
                                                             {highFlightRisk.grade1 && highFlightRisk.grade1.percente}% Grade 1 Employees are at high risk, You need to focus on {highFlightRisk.totalHighRiskEmployee && highFlightRisk.grade1.totalHighRiskEmployee} Employees on priority basis.
                               </b>
-                                                        <div className="pt-2">
-                                                            <a href="#">Click here to view</a>
-                                                        </div>
+
                                                     </div>
                                                 </li>
 
@@ -133,9 +129,7 @@ export default (props) => {
                                                         <b>
                                                             {highFlightRisk.Grade2 && highFlightRisk.Grade2.percente}% Grade 2 Employees are at high risk, You need to focus on {highFlightRisk.Grade2 && highFlightRisk.Grade2.totalHighRiskEmployee} Employees on priority basis.
                               </b>
-                                                        <div className="pt-2">
-                                                            <a href="#">Click here to view</a>
-                                                        </div>
+
                                                     </div>
                                                 </li>
                                             </ul>
@@ -170,12 +164,13 @@ export default (props) => {
                                                     <Cell key={`cell-${index}`} fill={colors[index]} />
                                                 ))
                                             }
+                                            <LabelList position="insideEnd" fill="#fff" fontSize={10} />
                                         </RadialBar>
-
+                                        <Tooltip />
                                     </RadialBarChart>
                                 </div>
 
-                                <div className="business-unit-text py-3 px-3">
+                                {/* <div className="business-unit-text py-3 px-3">
                                     <div className="d-flex justify-content-center px-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 105 101.656">
 
@@ -209,10 +204,8 @@ export default (props) => {
                                     <div className="emp-card-description">
                                         <small>You need to focus on 10% Employee on priority basis</small>
                                     </div>
-                                    <div className="pt-3">
-                                        <a className="my-3" href="#">Click here to view</a>
-                                    </div>
-                                </div>
+
+                                </div> */}
                             </div>
                         </div>
                         <div className="col-4 h-100">
@@ -255,9 +248,7 @@ export default (props) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="p-2">
-                                    <a className="small" href="#">Click here to view</a>
-                                </div>
+
                                 <div className="emp-card-text">
                                     <div className="emp-card-description pt-3">
                                         <ul className="px-3">
@@ -283,9 +274,7 @@ export default (props) => {
                                                     <b>
                                                         {employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage}% Male Employees are at high risk, You need to focus on {employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.totalMaleCriticalHighRiskEmp} Employees on priority basis.
                               </b>
-                                                    <div className="pt-2">
-                                                        <a href="#">Click here to view</a>
-                                                    </div>
+
                                                 </div>
                                             </li>
 
@@ -311,9 +300,7 @@ export default (props) => {
                                                     <b>
                                                         {employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage}% Female Employees are at high risk, You need to focus on {employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.totalFemaleCriticalHighRiskEmp} Employees on priority basis.
                               </b>
-                                                    <div className="pt-2">
-                                                        <a href="#">Click here to view</a>
-                                                    </div>
+
                                                 </div>
                                             </li>
                                         </ul>

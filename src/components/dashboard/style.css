@@ -482,6 +482,9 @@
 .gender-section img {
   height: 70px;
 }
+.gender-section div span {
+  color:#c5d647; 
+}
 .predictor-type li {
   cursor: pointer;
   padding:2px 1px;

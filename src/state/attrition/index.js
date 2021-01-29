@@ -20,24 +20,24 @@ const CRITICAL_EMPLOYEE_SUCCESS = 'CRITICAL_EMPLOYEE_SUCCESS'
 
 
 //Actions
-export const initLoadData = () => ({ type: INIT_LOAD })
-export const employeeRisk = () => ({ type: EMPLOYEE_RISK })
+export const initLoadData = payload => ({ payload, type: INIT_LOAD })
+export const employeeRisk = payload => ({ payload, type: EMPLOYEE_RISK })
 export const employeeRiskSuccess = payload => ({ payload, type: EMPLOYEE_RISK_SUCCESS })
-export const highFlightRisk = () => ({ type: HIGH_FLIGHT_RISK })
+export const highFlightRisk = payload => ({ payload, type: HIGH_FLIGHT_RISK })
 export const highFlightRiskSuccess = payload => ({ payload, type: HIGH_FLIGHT_RISK_SUCCESS })
-export const businessUnit = () => ({ type: BUSINESS_UNIT })
+export const businessUnit = payload => ({ payload, type: BUSINESS_UNIT })
 export const businessUnitSuccess = payload => ({ payload, type: BUSINESS_UNIT_SUCCESS })
-export const employeeCovered = () => ({ type: EMPLOYEE_COVERED })
+export const employeeCovered = payload => ({ payload, type: EMPLOYEE_COVERED })
 export const employeeCoveredSuccess = payload => ({ payload, type: EMPLOYEE_COVERED_SUCCESS })
-export const criticalEmployee = () => ({ type: CRITICAL_EMPLOYEE })
+export const criticalEmployee = payload => ({ payload, type: CRITICAL_EMPLOYEE })
 export const criticalEmployeeSuccess = payload => ({ payload, type: CRITICAL_EMPLOYEE_SUCCESS })
 
 export const epics = {
     businessUnit: (action$, state$) => action$.pipe(
         ofType(BUSINESS_UNIT),
-        switchMap(() => {
+        switchMap(({ payload: { Technology, Location, Department } }) => {
             return from(
-                axios.get(Services.baseUrl + Services.businessUnitWiseHighFlightRisk, {
+                axios.get(Services.baseUrl + Services.businessUnitWiseHighFlightRisk + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -51,9 +51,9 @@ export const epics = {
     ),
     criticalEmployee: (action$, state$) => action$.pipe(
         ofType(CRITICAL_EMPLOYEE),
-        switchMap(() => {
+        switchMap(({ payload: { Technology, Location, Department } }) => {
             return from(
-                axios.get(Services.baseUrl + Services.criticalEmployeeHighRisk, {
+                axios.get(Services.baseUrl + Services.criticalEmployeeHighRisk + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -67,9 +67,9 @@ export const epics = {
     ),
     employeeCovered: (action$, state$) => action$.pipe(
         ofType(EMPLOYEE_COVERED),
-        switchMap(() => {
+        switchMap(({ payload: { Technology, Location, Department } }) => {
             return from(
-                axios.get(Services.baseUrl + Services.riskAnalysisEmployeeCover, {
+                axios.get(Services.baseUrl + Services.riskAnalysisEmployeeCover + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -83,9 +83,9 @@ export const epics = {
     ),
     employeeRisk: (action$, state$) => action$.pipe(
         ofType(EMPLOYEE_RISK),
-        switchMap(() => {
+        switchMap(({ payload: { Technology, Location, Department } }) => {
             return from(
-                axios.get(Services.baseUrl + Services.enterpriseEmployeeRisk, {
+                axios.get(Services.baseUrl + Services.enterpriseEmployeeRisk + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -99,15 +99,15 @@ export const epics = {
     ),
     initLoadData: (action$, state$) => action$.pipe(
         ofType(INIT_LOAD),
-        switchMap(() => {
-            return [employeeRisk(), businessUnit(), highFlightRisk(), employeeCovered(), criticalEmployee()]
+        switchMap(({ payload }) => {
+            return [employeeRisk(payload), businessUnit(payload), highFlightRisk(payload), employeeCovered(payload), criticalEmployee(payload)]
         })
     ),
     highFlightRisk: (action$, state$) => action$.pipe(
         ofType(HIGH_FLIGHT_RISK),
-        switchMap(() => {
+        switchMap(({ payload: { Technology, Location, Department } }) => {
             return from(
-                axios.get(Services.baseUrl + Services.gradeWiseHighFlightRisk, {
+                axios.get(Services.baseUrl + Services.gradeWiseHighFlightRisk + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }

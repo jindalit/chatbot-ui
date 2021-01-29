@@ -9,7 +9,7 @@ const mapStateToProps = createStructuredSelector({
     getCriticalEmployee: getCriticalEmployee
 })
 const mapDispatchToProps = dispatch => ({
-    initLoadData: () => dispatch(initLoadData())
+    initLoadData: payload => dispatch(initLoadData(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)

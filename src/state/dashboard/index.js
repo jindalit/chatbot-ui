@@ -5,7 +5,7 @@ import axios from 'axios'
 import Services from '../../constant'
 
 // Action-type 
-const INIT_LOAD = 'INIT_LOAD'
+const INIT_LOAD_DASHBOARD = 'INIT_LOAD_DASHBOARD'
 const PULSE_SCORE = 'PULSE_SCORE'
 const PULSE_SCORE_SUCCESS = 'PULSE_SCORE_SUCCESS'
 const COMPANY_MOOD = 'COMPANY_MOOD'
@@ -21,14 +21,14 @@ const GENDER_WISE_SUCCESS = 'GENDER_WISE_SUCCESS'
 
 //Actions
 
-export const initLoadData = () => ({ type: INIT_LOAD })
-export const pulseScore = () => ({ type: PULSE_SCORE })
+export const initLoadData = payload => ({ payload, type: INIT_LOAD_DASHBOARD })
+export const pulseScore = payload => ({ payload, type: PULSE_SCORE })
 export const pulseScoreSucess = payload => ({ payload, type: PULSE_SCORE_SUCCESS })
-export const companyMood = () => ({ type: COMPANY_MOOD })
+export const companyMood = payload => ({ payload, type: COMPANY_MOOD })
 export const companyMoodSucess = payload => ({ payload, type: COMPANY_MOOD_SUCCESS })
-export const assaciatesResponse = () => ({ type: ASSACIATES_RESPONSE })
+export const assaciatesResponse = payload => ({ payload, type: ASSACIATES_RESPONSE })
 export const assaciatesResponseSucess = payload => ({ payload, type: ASSACIATES_RESPONSE_SUCCESS })
-export const flightRisk = () => ({ type: FLIGHT_RISK_ANALYSIS })
+export const flightRisk = payload => ({ payload, type: FLIGHT_RISK_ANALYSIS })
 export const flightRiskSucess = payload => ({ payload, type: FLIGHT_RISK_ANALYSIS_SUCCESS })
 export const unitPulse = (payload) => ({ payload, type: UNIT_PULSE })
 export const unitPulseSucess = payload => ({ payload, type: UNIT_PULSE_SUCCESS })
@@ -38,9 +38,9 @@ export const genderWiseSucess = payload => ({ payload, type: GENDER_WISE_SUCCESS
 export const epics = {
     assaciatesResponse: (action$, state$) => action$.pipe(
         ofType(ASSACIATES_RESPONSE),
-        switchMap(() => {
+        switchMap(({ payload: { Technology, Location, Department } }) => {
             return from(
-                axios.get(Services.baseUrl + Services.associateResponseView, {
+                axios.get(Services.baseUrl + Services.associateResponseView + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -54,9 +54,9 @@ export const epics = {
     ),
     genderWise: (action$, state$) => action$.pipe(
         ofType(GENDER_WISE),
-        switchMap(() => {
+        switchMap(({ payload: { Technology, Location, Department } }) => {
             return from(
-                axios.get(Services.baseUrl + Services.genderWise, {
+                axios.get(Services.baseUrl + Services.genderWise + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -70,9 +70,9 @@ export const epics = {
     ),
     companyMood: (action$, state$) => action$.pipe(
         ofType(COMPANY_MOOD),
-        switchMap(() => {
+        switchMap(({ payload: { Technology, Location, Department } }) => {
             return from(
-                axios.get(Services.baseUrl + Services.companyMood, {
+                axios.get(Services.baseUrl + Services.companyMood + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -85,9 +85,9 @@ export const epics = {
         })
     ), flightRisk: (action$, state$) => action$.pipe(
         ofType(FLIGHT_RISK_ANALYSIS),
-        switchMap(() => {
+        switchMap(({ payload: { Technology, Location, Department } }) => {
             return from(
-                axios.get(Services.baseUrl + Services.flightRiskAnalysis, {
+                axios.get(Services.baseUrl + Services.flightRiskAnalysis + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }
@@ -100,16 +100,16 @@ export const epics = {
         })
     ),
     initLoadData: (action$, state$) => action$.pipe(
-        ofType(INIT_LOAD),
-        switchMap(() => {
-            return [assaciatesResponse(), flightRisk(), pulseScore(), companyMood(), genderWise(), unitPulse({ type: 'unitPulseView' })]
+        ofType(INIT_LOAD_DASHBOARD),
+        switchMap(({ payload }) => {
+            return [assaciatesResponse(payload), flightRisk(payload), pulseScore(payload), companyMood(payload), genderWise(payload), unitPulse({ type: 'unitPulseView' })]
         })
     ),
     pulseScore: (action$, state$) => action$.pipe(
         ofType(PULSE_SCORE),
-        switchMap(() => {
+        switchMap(({ payload: { Technology, Location, Department } }) => {
             return from(
-                axios.get(Services.baseUrl + Services.pulseScore, {
+                axios.get(Services.baseUrl + Services.pulseScore + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, {
                     headers: {
                         'Content-Type': 'application/json'
                     }

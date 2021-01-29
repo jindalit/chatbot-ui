@@ -7,8 +7,7 @@ const SideNav = (props) => {
         <div className="iq-sidebar  sidebar-default ">
             <div className="iq-sidebar-logo d-flex align-items-center justify-content-between">
                 <a href="dashboard.html" className="header-logo">
-                    <img src={process.env.PUBLIC_URL + "images/logo.png"} className="img-fluid rounded-normal light-logo" alt="logo" />
-                    <img src={process.env.PUBLIC_URL + "images/logo-white.png"} className="img-fluid rounded-normal darkmode-logo" alt="logo" />
+                    <img src={process.env.PUBLIC_URL + "images/logo.jpg"} className="img-fluid rounded-normal light-logo" alt="logo" />
                 </a>
                 <div className="iq-menu-bt-sidebar">
                     <i className="las la-bars wrapper-menu"></i>

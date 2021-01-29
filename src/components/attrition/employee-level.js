@@ -110,7 +110,7 @@ export default (props) => {
                                 {
                                     employees.map(employee => (<tr>
                                         <td>{employee.id}</td>
-                                        <td>{employee.name}</td>
+                                        <td>{employee.id}****</td>
                                         <td>{employee.pulse}</td>
                                         <td>{employee.critical}</td>
                                         <td>{employee.band}</td>

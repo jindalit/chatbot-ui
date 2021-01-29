@@ -14,7 +14,7 @@ export const mapStateToProps = createStructuredSelector({
 })
 
 const mapDispatchToProps = dispatch => ({
-    initLoadData: () => dispatch(initLoadData()),
+    initLoadData: payload => dispatch(initLoadData(payload)),
     unitPulse: payload => dispatch(unitPulse(payload)),
 })
 

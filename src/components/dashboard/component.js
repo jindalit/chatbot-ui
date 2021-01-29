@@ -14,7 +14,7 @@ import GenderView from './gender-wise'
 
 export default (props) => {
     useEffect(() => {
-        props.initLoadData()
+        props.initLoadData({ Technology: '', Location: '', Department: '' })
     }, [])
     const updatePulseType = data => {
         props.unitPulse({

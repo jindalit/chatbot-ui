@@ -8,7 +8,7 @@ import EmployeeLevel from './employee-level'
 
 export default (props) => {
     useEffect(() => {
-        props.initLoadData()
+        props.initLoadData({ Technology: '', Location: '', Department: '' })
     }, [])
     const filterData = data => {
         props.initLoadData(data)

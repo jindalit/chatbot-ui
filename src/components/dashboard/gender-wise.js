@@ -16,17 +16,17 @@ export default (props) => {
                 <div className="gender-section">
                     <img src={process.env.PUBLIC_URL + "images/man.PNG"} />
                     {getGenderWise.MaleGender && <div>
-                        {getGenderWise.MaleGender.mood}<br />Mood<br /><br />
-                        {getGenderWise.MaleGender.progress}%<br /><br />
-                        Critical Employee<br />
+                        {getGenderWise.MaleGender.mood}<br /><span>Mood</span><br /><br />
+                        {getGenderWise.MaleGender.progress}%<br /><span>Progress</span><br /><br />
+                        <span>Critical Employee</span><br />
                         {getGenderWise.MaleGender.criticalEmployee}
                     </div>
                     }
                     <img src={process.env.PUBLIC_URL + "images/woman.PNG"} />
                     {getGenderWise.FemaleGender && <div>
-                        {getGenderWise.FemaleGender.mood}<br />Mood<br /><br />
-                        {getGenderWise.FemaleGender.progress}%<br /><br />
-                        Critical Employee<br />
+                        {getGenderWise.FemaleGender.mood}<br /><span>Mood</span><br /><br />
+                        {getGenderWise.FemaleGender.progress}%<br /><span>Progress</span><br /><br />
+                        <span>Critical Employee</span><br />
                         {getGenderWise.FemaleGender.criticalEmployee}
                     </div>
                     }
