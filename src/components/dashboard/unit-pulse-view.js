@@ -19,6 +19,24 @@ const empName = {
     'managerCommunication': 'Manager Communication'
 }
 let data = []
+
+const CustomTooltip = ({ active, payload, label }) => {
+    if (active) {
+        return (
+            <div className="custom-tooltip">
+                <p className="label">{label}</p>
+                <p className="intro">{`Strongly Disengage: ${payload[0].payload.stronglyDisengage} Employees`}</p>
+                <p className="desc">{`Disengage: ${payload[0].payload.disengage} Employees`}</p>
+                <p className="desc">{`Somewhat Disengage: ${payload[0].payload.somewhatDisengage} Employees`}</p>
+                <p className="desc">{`Somewhat Engage: ${payload[0].payload.somewhatEngage} Employees`}</p>
+                <p className="desc">{`Engage: ${payload[0].payload.Engage} Employees`}</p>
+                <p className="desc">{`Strongly Engage: ${payload[0].payload.stronglyEngage} Employees`}</p>
+            </div>
+        );
+    }
+
+    return null;
+};
 export default (props) => {
     const [pulseData, setPulseData] = useState([])
     const [type, setType] = useState('Unit Pulse View')
@@ -80,7 +98,7 @@ export default (props) => {
 
                         <XAxis type="number" />
                         <YAxis dataKey="name" type="category" minTickGap={1} tickLine={false} axisLine={false} />
-                        <Tooltip />
+                        <Tooltip content={<CustomTooltip />} />
                         <Bar stackId="0" dataKey="stronglyDisengage" maxBarSize={20} fill="#D80000" radius={[10, 0, 0, 10]} />
                         <Bar stackId="0" dataKey="disengage" maxBarSize={20} fill="#FF5607" />
                         <Bar dataKey="somewhatDisengage" stackId='0' maxBarSize={20} fill="#FF9800" />

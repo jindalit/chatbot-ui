@@ -493,3 +493,18 @@
   background:#f3cfcb;
   color:blue;
 }
+.custom-tooltip {
+  background: #fff;
+  padding: 7px;
+  border:1px solid #c5d647
+}
+.custom-tooltip p{
+  font-size: 13px;
+  margin: 7px 0;
+}
+.custom-tooltip .label {
+  color: #c5d647; font-size: 18px; font-weight: bold;
+}
+.custom-tooltip .red{
+  color:#D80000
+}

@@ -59,9 +59,9 @@ export default (props) => {
             }
             {data.length !== 0 &&
                 <div class="progress-value">
-                    <span class="newset"><span style={{ color: colors[0] }}>{data[0].value}</span><span style={{ color: colors[0] }}><br /> High Risk</span></span>
-                    <span class="newset"><span style={{ color: colors[1] }}>{data[1].value}</span> <span style={{ color: colors[1] }}><br /> Medium Risk</span></span>
-                    <span class="newset"><span style={{ color: colors[2] }}>{data[2].value}</span>  <span style={{ color: colors[2] }}><br />No Risk</span></span>
+                    <span class="newset"><span style={{ color: colors[0] }}>{data[0].value}%</span><span style={{ color: colors[0] }}><br /> High Risk</span></span>
+                    <span class="newset"><span style={{ color: colors[1] }}>{data[1].value}%</span> <span style={{ color: colors[1] }}><br /> Medium Risk</span></span>
+                    <span class="newset"><span style={{ color: colors[2] }}>{data[2].value}%</span>  <span style={{ color: colors[2] }}><br />No Risk</span></span>
                 </div>
             }
         </div >

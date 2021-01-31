@@ -1,15 +1,47 @@
 import React, { useEffect, useState } from 'react'
 import {
-    RadialBarChart, RadialBar, Cell, Legend, Tooltip,
-    LabelList
+    BarChart, Bar, XAxis, YAxis, Tooltip, Legend
 } from 'recharts';
 const colors = ['rgba(254, 114, 28, 0.85)', 'rgba(255, 202, 68, 0.85)', 'rgba(0, 54, 150, 0.85)', '#D80000', '#FF9800', '#79c267']
 
 
+const unitName = {
+    'percenteOfBusinesUnit1': 'BFSI',
+    'percenteOfBusinesUnit2': 'Manufacturing',
+    'percenteOfBusinesUnit3': 'Energy',
+    'percenteOfBusinesUnit4': 'Life Sciences'
+}
+const CustomTooltip = ({ active, payload, label }) => {
+    if (active) {
+        return (
+            <div className="custom-tooltip">
+                <p className="label">{label}</p>
+                <p className="red">{`${payload[0].payload.value}% Employees`}</p>
+            </div>
+        );
+    }
+
+    return null;
+};
+
+const CustomTooltip2 = ({ active, payload, label }) => {
+    if (active) {
+        return (
+            <div className="custom-tooltip">
+                <p className="label">{label}</p>
+                <p className="red">{`${payload[0].payload.total} Employees`}</p>
+            </div>
+        );
+    }
+
+    return null;
+};
 let datanew = []
+let dataGrade = []
 export default (props) => {
     const { employeeRisk, highFlightRisk, businessUnit } = props
     const [data, setData] = useState([])
+    const [gradeData, setGradeData] = useState([])
     useEffect(() => {
         if (businessUnit) {
             datanew = []
@@ -17,7 +49,7 @@ export default (props) => {
                 if (key !== 'totalHighRiskAssociates') {
                     datanew.push(
                         {
-                            name: key.toUpperCase(),
+                            name: unitName[key],
                             value: businessUnit[key]
                         })
                 }
@@ -25,6 +57,22 @@ export default (props) => {
             setData(datanew)
         }
     }, [businessUnit])
+
+    useEffect(() => {
+        debugger
+        if (highFlightRisk) {
+            dataGrade = []
+            for (var key in highFlightRisk) {
+                dataGrade.push(
+                    {
+                        name: key,
+                        percente: highFlightRisk[key].percente,
+                        total: highFlightRisk[key].totalHighRiskEmployee
+                    })
+            }
+            setGradeData(dataGrade)
+        }
+    }, [highFlightRisk])
 
     return (
         <div className="card card-body">
@@ -42,96 +90,43 @@ export default (props) => {
                                         </div>
                                     </div>
                                     <div className="card-body d-flex h-100 text-center px-4 pt-3 pb-1">
-                                        <div className="col-4">
-                                            <div className="grade-wise-div-1">
-                                                <h5>{highFlightRisk.grade1 && highFlightRisk.grade1.percente}%</h5>
-                                                <p>Grade 1</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-4">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="80" viewBox="0 0 151.417 116">
-
-                                                <g transform="translate(-342 -472)">
-                                                    <path className="a" d="M53.73,41.65a17.655,17.655,0,0,1,7.046,1.462,17.581,17.581,0,0,1,3.334-9.505,20.732,20.732,0,0,0-4.247-.44H46.1a20.756,20.756,0,0,0-4.233.436A17.6,17.6,0,0,1,45.21,43.834,17.629,17.629,0,0,1,53.73,41.65Z" transform="translate(364.841 472.386)" />
-                                                    <circle className="a" cx="16.223" cy="16.223" r="16.223" transform="translate(401.595 472)" />
-                                                    <path className="a" d="M70.811,60.912A14.946,14.946,0,1,0,55.876,45.74,18.523,18.523,0,0,1,64.5,59.5,14.834,14.834,0,0,0,70.811,60.912Z" transform="translate(372.486 471.215)" />
-                                                    <path className="b" d="M37.847,31.019A14.945,14.945,0,1,0,45.8,58.6,18.513,18.513,0,0,1,52.75,46.8c.015-.28.042-.556.042-.839A14.946,14.946,0,0,0,37.847,31.019Z" transform="translate(354.494 471.214)" />
-                                                    <path className="a" d="M71.82,36.009a18.517,18.517,0,0,1,8.618,13.757A14.939,14.939,0,1,0,71.82,36.009Z" transform="translate(381.185 465.906)" />
-                                                    <circle className="b" cx="14.947" cy="14.947" r="14.947" transform="translate(403.623 517.663)" />
-                                                    <path className="a" d="M76.094,51.019H63.506a18.421,18.421,0,0,1-5.686,12.83A22.747,22.747,0,0,1,74.063,85.614v4.779c12.427-.459,19.589-3.977,20.06-4.218l1-.507h.1V70.157A19.153,19.153,0,0,0,76.094,51.019Z" transform="translate(373.546 482.126)" />
-                                                    <path className="a" d="M92.034,41.289H79.45a18.419,18.419,0,0,1-5.685,12.83A22.744,22.744,0,0,1,90.006,75.883v4.779c12.425-.457,19.589-3.975,20.06-4.218l1-.505h.107V60.427A19.159,19.159,0,0,0,92.034,41.289Z" transform="translate(382.246 476.818)" />
-                                                    <path className="b" d="M54.989,63.848a18.436,18.436,0,0,1-5.683-12.757c-.465-.034-.927-.073-1.4-.073H35.224A19.161,19.161,0,0,0,16.085,70.157V85.67l.039.24,1.068.337A89.728,89.728,0,0,0,38.743,90.3V85.613A22.753,22.753,0,0,1,54.989,63.848Z" transform="translate(350.776 482.126)" />
-                                                    <path className="b" d="M64.876,61H52.193A19.162,19.162,0,0,0,33.054,80.141V95.654l.04.243,1.066.334a87.163,87.163,0,0,0,26.02,4.2c14.066,0,22.218-4.011,22.722-4.266l1-.507h.105V80.141A19.152,19.152,0,0,0,64.876,61Z" transform="translate(360.034 487.573)" />
-                                                    <path className="b" d="M21.762,51.49a14.857,14.857,0,0,0,6.315-1.416A18.524,18.524,0,0,1,36.7,36.316,14.941,14.941,0,1,0,21.762,51.49Z" transform="translate(345.718 466.074)" />
-                                                    <path className="b" d="M37.406,54.429A18.429,18.429,0,0,1,31.723,41.6H19.138A19.161,19.161,0,0,0,0,60.735V76.248H.107l1,.505c.473.238,7.634,3.76,20.06,4.216V76.191A22.74,22.74,0,0,1,37.406,54.429Z" transform="translate(342 476.985)" />
-                                                    <path className="b" d="M30.908,38.784a20.171,20.171,0,0,1,7.141-1.618,17.681,17.681,0,0,1,8.666,2.27,15.031,15.031,0,0,0,1.623-1.886,19.035,19.035,0,0,1-2.071-19.668,14.649,14.649,0,0,0-9.89-3.8A14.807,14.807,0,0,0,22.093,25.034,17.78,17.78,0,0,1,30.908,38.784Z" transform="translate(354.054 461.972)" />
-                                                    <path className="a" d="M59.117,36.707a14.788,14.788,0,0,0,1.816,2.326,17.658,17.658,0,0,1,7.87-1.867,22.17,22.17,0,0,1,6.912,1.255A17.81,17.81,0,0,1,85.607,23.97,14.771,14.771,0,0,0,60.93,18.7a18.962,18.962,0,0,1-1.813,18.008Z" transform="translate(374.254 461.97)" />
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div className="col-4">
-                                            <div className="grade-wise-div-2">
-                                                <h5>{highFlightRisk.Grade2 && highFlightRisk.Grade2.percente}%</h5>
-                                                <p>Grade 2</p>
-                                            </div>
-                                        </div>
+                                        <BarChart width={320} height={250} data={gradeData}
+                                            margin={{ top: 0, right: 0, left: -20, bottom: 30 }}>
+                                            <XAxis dataKey="name" interval={0} textAnchor="end" angle={-20} />
+                                            <YAxis />
+                                            <Tooltip content={<CustomTooltip2 />} />
+                                            <Bar dataKey="total" fill="#c5d647" />
+                                        </BarChart>
                                     </div>
-
-
                                     <div className="emp-card-text">
                                         <div className="emp-card-description pt-3">
                                             <ul className="px-3">
-                                                <li className="d-flex align-items-center pb-3 border-bottom">
-                                                    <div className="profile-icon iq-icon-box rounded-small text-center">
-                                                        <div className="lgf-progress lgf-progress-small" data-percentage={highFlightRisk.grade1 && Math.ceil(highFlightRisk.grade1.percente / 10) * 10}>
-                                                            <span className="lgf-progress-left">
-                                                                <span className="lgf-progress-bar lgf-progress--blue">
+                                                {gradeData.lenght !== 0 && gradeData.map(item => (
+                                                    <li className="d-flex align-items-center pb-3 border-bottom">
+                                                        <div className="profile-icon iq-icon-box rounded-small text-center">
+                                                            <div className="lgf-progress lgf-progress-small" data-percentage={Math.ceil(item.percente / 10) * 10}>
+                                                                <span className="lgf-progress-left">
+                                                                    <span className="lgf-progress-bar lgf-progress--blue">
+                                                                    </span>
                                                                 </span>
-                                                            </span>
-                                                            <span className="lgf-progress-right">
-                                                                <span className="lgf-progress-bar lgf-progress--blue">
+                                                                <span className="lgf-progress-right">
+                                                                    <span className="lgf-progress-bar lgf-progress--blue">
+                                                                    </span>
                                                                 </span>
-                                                            </span>
-                                                            <div className="lgf-progress-value">
-                                                                <div className="lgf-progress-text">
-                                                                    <h6>{highFlightRisk.grade1 && highFlightRisk.grade1.percente}%</h6>
+                                                                <div className="lgf-progress-value">
+                                                                    <div className="lgf-progress-text">
+                                                                        <h6>{item.percente}%</h6>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="emp-loader-text">
-                                                        <b>
-                                                            {highFlightRisk.grade1 && highFlightRisk.grade1.percente}% Grade 1 Employees are at high risk, You need to focus on {highFlightRisk.totalHighRiskEmployee && highFlightRisk.grade1.totalHighRiskEmployee} Employees on priority basis.
-                              </b>
+                                                        <div className="emp-loader-text">
+                                                            <b>
+                                                                {item.percente}% {item.name.toUpperCase()} Employees are at high risk, You need to focus on {item.total} Employees on priority basis.</b>
 
-                                                    </div>
-                                                </li>
-
-                                                <li className="d-flex align-items-center py-3">
-                                                    <div className="profile-icon iq-icon-box rounded-small text-center">
-                                                        <div className="lgf-progress lgf-progress-small" data-percentage={highFlightRisk.Grade2 && Math.ceil(highFlightRisk.Grade2.percente / 10) * 10}>
-                                                            <span className="lgf-progress-left">
-                                                                <span className="lgf-progress-bar lgf-progress--orange">
-                                                                </span>
-                                                            </span>
-                                                            <span className="lgf-progress-right">
-                                                                <span className="lgf-progress-bar lgf-progress--orange">
-                                                                </span>
-                                                            </span>
-                                                            <div className="lgf-progress-value">
-                                                                <div className="lgf-progress-text">
-                                                                    <h6>{highFlightRisk.Grade2 && highFlightRisk.Grade2.percente}%</h6>
-                                                                </div>
-                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div className="emp-loader-text">
-                                                        <b>
-                                                            {highFlightRisk.Grade2 && highFlightRisk.Grade2.percente}% Grade 2 Employees are at high risk, You need to focus on {highFlightRisk.Grade2 && highFlightRisk.Grade2.totalHighRiskEmployee} Employees on priority basis.
-                              </b>
-
-                                                    </div>
-                                                </li>
+                                                    </li>
+                                                ))}
                                             </ul>
                                         </div>
                                     </div>
@@ -146,28 +141,15 @@ export default (props) => {
                                     </div>
                                 </div>
 
-                                <div className="card-body" style={{ maxHeight: "13rem" }}>
+                                <div className="card-body" style={{ height: "300px" }}>
 
-                                    <RadialBarChart
-                                        width={250}
-                                        height={160}
-                                        cx={150}
-                                        cy={80}
-                                        innerRadius={40}
-                                        outerRadius={80}
-                                        barSize={7}
-                                        data={data}
-                                    >
-                                        <RadialBar minPointSize={15} background dataKey="value" >
-                                            {
-                                                data.map((entry, index) => (
-                                                    <Cell key={`cell-${index}`} fill={colors[index]} />
-                                                ))
-                                            }
-                                            <LabelList position="insideEnd" fill="#fff" fontSize={10} />
-                                        </RadialBar>
-                                        <Tooltip />
-                                    </RadialBarChart>
+                                    <BarChart width={320} height={250} data={data}
+                                        margin={{ top: 0, right: 0, left: -20, bottom: 30 }}>
+                                        <XAxis dataKey="name" interval={0} textAnchor="end" angle={-20} />
+                                        <YAxis />
+                                        <Tooltip content={<CustomTooltip />} />
+                                        <Bar dataKey="value" fill="#8884d8" />
+                                    </BarChart>
                                 </div>
 
                                 {/* <div className="business-unit-text py-3 px-3">

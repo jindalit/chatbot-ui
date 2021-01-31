@@ -2,6 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 
+const CustomTooltip = ({ active, payload, label }) => {
+    if (active) {
+        return (
+            <div className="custom-tooltip">
+                <p className="label">{label}</p>
+                <p className="intro">{`Positive response: ${payload[0].payload.Positive} Employees`}</p>
+                <p className="desc">{`Negative response: ${payload[0].payload.Negative} Employees`}</p>
+            </div>
+        );
+    }
+
+    return null;
+};
 let datanew = []
 export default (props) => {
     const { assaciatesResponse } = props
@@ -49,7 +62,7 @@ export default (props) => {
                     </defs>
                     <XAxis dataKey="name" interval={0} textAnchor="end" angle={-7}></XAxis>
                     <YAxis interval={0} />
-                    <Tooltip />
+                    <Tooltip content={<CustomTooltip />} />
                     <Area
                         stackId='0'
                         type="monotone"
