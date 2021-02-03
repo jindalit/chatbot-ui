@@ -11,12 +11,16 @@ const unitName = {
     'buD': 'Life Sciences'
 }
 const empName = {
-    'employeeRole': 'Employee Role',
-    'teamWork': 'Team Work',
-    'totalRewards': 'Total Rewards',
-    'learningAndDevelopment': 'Learning &Development',
-    'performanceManagement': 'Performance Management',
-    'managerCommunication': 'Manager Communication'
+    career: 'Career',
+    culture: 'Culture',
+    'customer': 'Customer',
+    'decisionMaking': 'DecisionMaking',
+    'employeeRole': 'EmployeeRole',
+    'leadership': 'Leadership',
+    'manager': 'Manager',
+    'performanceManagement': 'PerformanceManagement',
+    'processPolicy': 'ProcessPolicy',
+    'teamWork': 'TeamWork'
 }
 let data = []
 
@@ -25,12 +29,12 @@ const CustomTooltip = ({ active, payload, label }) => {
         return (
             <div className="custom-tooltip">
                 <p className="label">{label}</p>
-                <p className="intro">{`Strongly Disengage: ${payload[0].payload.stronglyDisengage} Employees`}</p>
-                <p className="desc">{`Disengage: ${payload[0].payload.disengage} Employees`}</p>
-                <p className="desc">{`Somewhat Disengage: ${payload[0].payload.somewhatDisengage} Employees`}</p>
-                <p className="desc">{`Somewhat Engage: ${payload[0].payload.somewhatEngage} Employees`}</p>
-                <p className="desc">{`Engage: ${payload[0].payload.Engage} Employees`}</p>
-                <p className="desc">{`Strongly Engage: ${payload[0].payload.stronglyEngage} Employees`}</p>
+                <p className="intro">{`Strongly Disengaged: ${payload[0].payload.stronglyDisengage} Employees`}</p>
+                <p className="desc">{`Disengaged: ${payload[0].payload.disengage} Employees`}</p>
+                <p className="desc">{`Somewhat Disengaged: ${payload[0].payload.somewhatDisengage} Employees`}</p>
+                <p className="desc">{`Somewhat Engaged: ${payload[0].payload.somewhatEngage} Employees`}</p>
+                <p className="desc">{`Engaged: ${payload[0].payload.Engage} Employees`}</p>
+                <p className="desc">{`Strongly Engaged: ${payload[0].payload.stronglyEngage} Employees`}</p>
             </div>
         );
     }
@@ -39,8 +43,8 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 export default (props) => {
     const [pulseData, setPulseData] = useState([])
-    const [type, setType] = useState('Unit Pulse View')
-    const [leftMargin, setLeftMargin] = useState(70)
+    const [type, setType] = useState('Employee Experience View')
+    const [leftMargin, setLeftMargin] = useState(170)
     useEffect(() => {
         const { unitPulse } = props
         data = []
@@ -69,7 +73,7 @@ export default (props) => {
             setLeftMargin(70)
             props.updatePulseType('unitPulseView')
         } else {
-            setLeftMargin(120)
+            setLeftMargin(170)
             props.updatePulseType('EmployeeExperienceView')
         }
     }
@@ -79,12 +83,12 @@ export default (props) => {
                 <div className="header-title">
                     <h6 className="card-title">{type}</h6>
                 </div>
-                <div>
+                {/* <div>
                     <select className='form-control' onChange={e => changeType(e)}>
                         <option>Unit Pulse View</option>
                         <option>Employee Experience View</option>
                     </select>
-                </div>
+                </div> */}
             </div>
             {data.length !== 0 &&
                 <ResponsiveContainer>
@@ -96,8 +100,8 @@ export default (props) => {
                         layout="vertical"
                     >
 
-                        <XAxis type="number" />
-                        <YAxis dataKey="name" type="category" minTickGap={1} tickLine={false} axisLine={false} />
+                        <XAxis type="number" interval={0} />
+                        <YAxis dataKey="name" interval={0} type="category" />
                         <Tooltip content={<CustomTooltip />} />
                         <Bar stackId="0" dataKey="stronglyDisengage" maxBarSize={20} fill="#D80000" radius={[10, 0, 0, 10]} />
                         <Bar stackId="0" dataKey="disengage" maxBarSize={20} fill="#FF5607" />

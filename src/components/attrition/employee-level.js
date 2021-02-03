@@ -41,10 +41,11 @@ export default (props) => {
                             <div className="lgf-progress-value">
                                 <div className="lgf-progress-text">
                                     <h6>{employeeCovered.highRisk.highRiskPercentage}%</h6>
+
                                 </div>
                             </div>
                         </div>
-                        <p onClick={() => riskType('high')} className={type === 'high' ? 'active' : ''}>High Risk Employees</p>
+                        <p onClick={() => riskType('high')} className={type === 'high' ? 'active' : ''}>High Risk Employees<p style={{ fontSize: '11px', color: '#FF5607' }}>Click here to view</p></p>
                     </div>
                     }
                     {employeeCovered.mediumRisk && <div className="d-flex align-items-center">
@@ -63,7 +64,7 @@ export default (props) => {
                                 </div>
                             </div>
                         </div>
-                        <p onClick={() => riskType('medium')} className={type === 'medium' ? 'active' : ''}> Medium Risk Employees</p>
+                        <p onClick={() => riskType('medium')} className={type === 'medium' ? 'active' : ''}> Medium Risk Employees<p style={{ fontSize: '11px', color: '#FF5607' }}>Click here to view</p></p>
                     </div>}
 
                     {employeeCovered.noRisk && <div className="d-flex align-items-center">
@@ -82,7 +83,7 @@ export default (props) => {
                                 </div>
                             </div>
                         </div>
-                        <p onClick={() => riskType('no')} className={type === 'no' ? 'active' : ''}> No Risk Employees</p>
+                        <p onClick={() => riskType('no')} className={type === 'no' ? 'active' : ''}> No Risk Employees<p style={{ fontSize: '11px', color: '#FF5607' }}>Click here to view</p></p>
                     </div>}
 
                 </div>

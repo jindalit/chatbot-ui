@@ -18,6 +18,11 @@
     top: -25px;
     display: inline-block;
 }
+.lgf-progress-text .emonji{
+  top:20%;
+  left:32%;
+  background-repeat:no-repeat ;
+}
 .wave {
     width:100%;
     display: inline-block;

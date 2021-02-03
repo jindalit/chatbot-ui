@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import SideNav from '../common/sideNav'
 import Header from '../common/header'
-import Filters from '../common/filter-section'
+/* import Filters from '../common/filter-section' */
 import PanEnterprise from './pan-enterprise'
 import Demographics from './demographics'
 import EmployeeLevel from './employee-level'
@@ -21,7 +21,7 @@ export default (props) => {
                 <div className="row">
                     <div className="d-flex justify-content-between px-3 py-0 m-1" style={{ width: '100%' }}>
                         <h4>Attrition Predictor -Summary</h4>
-                        <Filters filterData={filterData} />
+                        {/* <Filters filterData={filterData} /> */}
                     </div>
                     <div className="card card-body pb-0">
                         <div className="d-flex justify-content-between align-items-center" id="NavLinks-Attrition">

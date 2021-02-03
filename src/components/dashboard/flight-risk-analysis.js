@@ -6,6 +6,25 @@ import {
 
 let datanew = []
 const colors = ['#D80000', '#FF9800', '#79c267']
+const name = {
+    highRisk: 'High Risk',
+    mediumRisk: 'Medium Risk',
+    noRisk: 'No Risk'
+}
+const CustomTooltip = ({ active, payload, label }) => {
+    if (active) {
+        return (
+            <div className="custom-tooltip">
+                <p className="label">{payload[0].name}</p>
+                <p className='red'>{`${payload[0].value}% Employees`}</p>
+            </div>
+        );
+    }
+
+    return null;
+};
+
+const perHighRisk = '% High Risk'
 export default (props) => {
     const { flightRisk } = props
     const [data, setData] = useState([])
@@ -13,10 +32,10 @@ export default (props) => {
         if (flightRisk) {
             datanew = []
             for (var key in flightRisk) {
-                if (key !== 'associates') {
+                if (key === 'highRisk' || key === 'mediumRisk' || key === 'noRisk') {
                     datanew.push(
                         {
-                            name: key.toUpperCase(),
+                            name: name[key],
                             value: flightRisk[key]
                         })
                 }
@@ -49,11 +68,11 @@ export default (props) => {
                                     <Cell key={`slice-${index}`} fill={colors[index]} />
                                 ))
                             }
-                            <Label width={50} position="center" style={{ fontWeight: 'bold', fontSize: '1.5em', }}>
-                                {data[0].value}
+                            <Label width={50} position="center" fill={colors[0]} style={{ color: colors[0], fontWeight: 'bold', fontSize: '1.3em' }}>
+                                {data[0].value + perHighRisk}
                             </Label>
                         </Pie>
-                        <Tooltip />
+                        <Tooltip content={<CustomTooltip />} />
                     </PieChart>
                 </div>
             }

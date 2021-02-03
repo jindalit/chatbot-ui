@@ -1,5 +1,5 @@
 export default {
-  baseUrl: 'http://149.129.191.22:8081/chatboat/webapi/',
+  baseUrl: 'http://43.224.136.47:8081/chatboat/webapi/',
   login: 'chat/validate',
   signup: 'chat/registration',
   chat: 'chat/track',

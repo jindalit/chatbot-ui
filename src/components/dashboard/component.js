@@ -18,7 +18,8 @@ export default (props) => {
     }, [])
     const updatePulseType = data => {
         props.unitPulse({
-            type: data
+            type: data,
+            Technology: '', Location: '', Department: ''
         })
     }
     const filterData = data => {

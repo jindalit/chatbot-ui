@@ -11,13 +11,13 @@ code {
   border-bottom: 0;
 }
 .icon-emonji {
-  width:65px;
-  height:65px;
+  width:120px;
+  height:85px;
   margin-top: 5px;
   display: inline-block;
   background-repeat: no-repeat;
   background-position: top center;
-    background-size: 45%;
+    background-size: 25%;
 }
 .icon-angry {  
   background-image: url(/images/angry.svg);
@@ -29,10 +29,10 @@ code {
   position: absolute;
   top: 38px;
   text-align: center;
-  left: 20%;
+  left: 5%;
 }
 .icon-angry::after, .icon-angry-full::after{
-  content: 'Angry';  
+  content: 'Strongly Disengaged';  
 }
 .icon-bad {  
   background-image: url(/images/sad.svg);
@@ -41,8 +41,8 @@ code {
   background-image: url(/images/sad-full.svg);
 }
 .icon-bad::after, .icon-bad-full::after{
-  content: 'Sad'; 
-  left: 25%; 
+  content: 'Disengaged'; 
+  left: 15%; 
 }
 .icon-ok {  
   background-image: url(/images/ok.svg);
@@ -51,8 +51,8 @@ code {
   background-image: url(/images/ok-full.svg);
 }
 .icon-ok::after, .icon-ok-full::after{
-  content: 'Ok';  
-  left: 35%;
+  content: 'Somewhat Disengaged';  
+  left: 5%;
 }
 .icon-happy {  
   background-image: url(/images/happy.svg);
@@ -62,8 +62,8 @@ code {
   
 }
 .icon-happy::after, .icon-happy-full::after{
-  content: 'Happy';  
-  left: 15%;
+  content: 'Somewhat Engaged';  
+  left: 5%;
 }
 .icon-great {  
   background-image: url(/images/great.svg);
@@ -72,7 +72,18 @@ code {
   background-image: url(/images/great-full.svg);
 }
 .icon-great::after, .icon-great-full::after{
-  content: 'Great';  
+  content: 'Engaged';  
+  left: 20%
+}
+
+.icon-strongly-agree {  
+  background-image: url(/images/strongly-agree-blank.svg);
+}
+.icon-strongly-agree-full {
+  background-image: url(/images/strongly-agree.svg);
+}
+.icon-strongly-agree::after, .icon-strongly-agree-full::after{
+  content: 'Strongly Engaged';  
 }
 .feedback-content {
   position: relative;

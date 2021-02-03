@@ -7,8 +7,8 @@ const CustomTooltip = ({ active, payload, label }) => {
         return (
             <div className="custom-tooltip">
                 <p className="label">{label}</p>
-                <p className="intro">{`Positive response: ${payload[0].payload.Positive} Employees`}</p>
-                <p className="desc">{`Negative response: ${payload[0].payload.Negative} Employees`}</p>
+                <p className="intro">{`Positive responses: ${payload[0].payload.Positive} Employees`}</p>
+                <p className="desc">{`Negative responses: ${payload[0].payload.Negative} Employees`}</p>
             </div>
         );
     }
@@ -83,6 +83,7 @@ export default (props) => {
                         fill="url(#MyGradient2)"
                         dot
                     />
+
                 </AreaChart>
                 </ResponsiveContainer>
             }

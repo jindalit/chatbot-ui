@@ -1,9 +1,42 @@
 import React, { useEffect, useState } from 'react'
 import {
-    BarChart, Bar, XAxis, YAxis, Tooltip, Legend
+    BarChart, Bar, XAxis, YAxis, Tooltip, Legend, LabelList
 } from 'recharts';
 const colors = ['rgba(254, 114, 28, 0.85)', 'rgba(255, 202, 68, 0.85)', 'rgba(0, 54, 150, 0.85)', '#D80000', '#FF9800', '#79c267']
 
+const renderCustomizedLabel = (props) => {
+    const {
+        x, y, width, height, value,
+    } = props;
+
+    const offset = 50;
+    const offset2 = 20;
+    return (
+        <React.Fragment>
+            <text x={x + width - offset} y={y + height - 25} fill={"#fff"} textAnchor="end">
+                {value}
+            </text>
+            <text x={x + width - offset2} y={y + height - 5} fill={"#fff"} textAnchor="end">
+                Employees
+        </text>
+        </React.Fragment>
+    );
+};
+
+const renderCustomizedLabel2 = (props) => {
+    const {
+        x, y, width, height, value,
+    } = props;
+
+    const offset = 15;
+    return (
+        <React.Fragment>
+            <text x={x + width - offset} y={y + height - 25} fill={"#fff"} textAnchor="end">
+                {value}%
+            </text>
+        </React.Fragment>
+    );
+};
 
 const unitName = {
     'percenteOfBusinesUnit1': 'BFSI',
@@ -59,7 +92,6 @@ export default (props) => {
     }, [businessUnit])
 
     useEffect(() => {
-        debugger
         if (highFlightRisk) {
             dataGrade = []
             for (var key in highFlightRisk) {
@@ -95,7 +127,9 @@ export default (props) => {
                                             <XAxis dataKey="name" interval={0} textAnchor="end" angle={-20} />
                                             <YAxis />
                                             <Tooltip content={<CustomTooltip2 />} />
-                                            <Bar dataKey="total" fill="#c5d647" />
+                                            <Bar dataKey="total" fill="#c5d647" barSize={{ height: 26 }} >
+                                                <LabelList dataKey="total" content={renderCustomizedLabel} position="insideTop" style={{ fill: "white" }} />
+                                            </Bar>
                                         </BarChart>
                                     </div>
                                     <div className="emp-card-text">
@@ -148,7 +182,9 @@ export default (props) => {
                                         <XAxis dataKey="name" interval={0} textAnchor="end" angle={-20} />
                                         <YAxis />
                                         <Tooltip content={<CustomTooltip />} />
-                                        <Bar dataKey="value" fill="#8884d8" />
+                                        <Bar dataKey="value" fill="#8884d8">
+                                            <LabelList dataKey="value" content={renderCustomizedLabel2} position="insideTop" style={{ fill: "white" }} />
+                                        </Bar>
                                     </BarChart>
                                 </div>
 

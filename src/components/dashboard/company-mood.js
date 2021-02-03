@@ -9,6 +9,10 @@ const data01 = [
     { name: 'Group B', value: 150, v: 100 }
 ];
 const colors = ['#D80000', '#FF9800']
+const getClassName = ratingName => {
+    const name = ratingName ? ratingName.toLowerCase() : ratingName
+    return name === 'somewhat disagree' ? 'somewhatdisagree' : name === 'disagree' ? 'disagree' : name === 'strongly disagree' ? 'stronglydisagree' : name === 'somewhat agree' ? 'somewhatagree' : name === 'agree' ? 'agree' : 'stronglyagree'
+}
 export default (props) => {
 
     return (
@@ -20,35 +24,32 @@ export default (props) => {
                 </div>
             </div>
             <div className="card-body">
-                <PieChart width={160} height={160}>
-                    <Pie
-                        data={data01}
-                        dataKey="value"
-                        startAngle={110}
-                        endAngle={-250}
-                        innerRadius={60}
-                        outerRadius={80}
-                        isAnimationActive={true}
-                    >
-                        {
-                            data01.map((entry, index) => (
-                                <Cell key={`slice-${index}`} fill={colors[index]} />
-                            ))
+                <div className="lgf-progress" data-percentage={props.companyMood && Math.ceil((props.companyMood.overAllMood * 10) / 10) * 10}>
+                    <span className="lgf-progress-left">
+                        <span className="lgf-progress-bar lgf-progress--orange"></span>
+                    </span>
+                    <span className="lgf-progress-right">
+                        <span className="lgf-progress-bar lgf-progress--orange"></span>
+                    </span>
+                    <div className="lgf-progress-value">
+                        {props.companyMood && <div className="lgf-progress-text">
+                            <h6><br /><br />{props.companyMood.overAllMood}</h6>
+                            <div className={getClassName(props.companyMood.ratingName)}>
+                                <span className='emonji'></span>
+                            </div>
+                        </div>
                         }
-                        <Label width={50} position="center" style={{ fontWeight: 'bold', fontSize: '1.4em' }}>
-                            {props.companyMood && props.companyMood.overAllMood}
-                        </Label>
-                    </Pie>
-                    <Tooltip />
-                </PieChart>
+                    </div>
+                </div>
+
             </div>
-            <div class="progress-value">
+            {/* <div class="progress-value">
                 <span class="newset">&bull; Quality Of Work</span>
                 <span class="newset">&bull; Team</span>
                 <span class="newset">&bull; Leadership</span>
                 <span class="newset">&bull; Manager</span>
                 <span class="newset">&bull; Career Development</span>
-            </div>
+            </div> */}
         </div >
     )
 }

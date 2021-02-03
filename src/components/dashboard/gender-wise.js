@@ -12,7 +12,7 @@ export default (props) => {
                 </div>
 
             </div>
-            <div className="card-body">
+            {getGenderWise && <div className="card-body">
                 <div className="gender-section">
                     <img src={process.env.PUBLIC_URL + "images/man.PNG"} />
                     {getGenderWise.MaleGender && <div>
@@ -32,7 +32,7 @@ export default (props) => {
                     }
 
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }

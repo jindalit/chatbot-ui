@@ -8,7 +8,7 @@ import AttendanceSection from './attendance-section'
 import QuestionSection from './question-section'
 
 const Chat = (props) => {
-    const { chats, questionList, suggestionList } = props
+    const { chats, questionList, suggestionList, getSurveyName } = props
     const [sectionName, setSectionName] = useState('chat')
     useEffect(() => {
         props.fetchQuestion()
@@ -51,7 +51,7 @@ const Chat = (props) => {
                                             <div class="tab-content h-100">
                                                 {
                                                     sectionName === 'chat' ? <ChatSection chats={chats} sendMessage={sendMessage} questions={suggestionList} searchQuestion={searchQuestion} />
-                                                        : sectionName === 'question' ? <QuestionSection questionList={questionList} submitQuiz={submitQuiz} />
+                                                        : sectionName === 'question' ? <QuestionSection getSurveyName={getSurveyName} questionList={questionList} submitQuiz={submitQuiz} />
                                                             : <AttendanceSection />
                                                 }
                                             </div>

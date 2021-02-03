@@ -57,6 +57,7 @@ export default (props) => {
                 </header>
             </div>
             <div className='chat-content scroller'>
+                {chats.length === 0 && <h5>Hi ! I am your HR assistant AMY, I can answer questions related to policy, please let me know how can I help you</h5>}
                 {chats.map(chat => (<React.Fragment>
                     <div class="chat">
                         <div class="chat-user">

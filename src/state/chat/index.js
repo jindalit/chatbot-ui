@@ -104,6 +104,7 @@ export const epics = {
 export const initialState = {
   chats: [],
   feedback: false,
+  survey_name: '',
   searchQuestion: []
 }
 
@@ -120,6 +121,7 @@ export default function reducer(state = initialState, action) {
     case FETCH_QUESTION_SUCCESS:
       return {
         ...state,
+        surveyName: action.payload.data.survey_name,
         questions: action.payload.data.serveyQuestionList
       }
     case SEARCH_SUCCESS:
@@ -139,5 +141,6 @@ export default function reducer(state = initialState, action) {
 }
 export const getChat = state => state.chat.chats
 export const getQuestion = state => state.chat.questions
+export const getSurveyName = state => state.chat.surveyName
 export const getFeedback = state => state.chat.feedback
 export const getSuggestQuestion = state => state.chat.searchQuestion

@@ -102,7 +102,7 @@ export const epics = {
     initLoadData: (action$, state$) => action$.pipe(
         ofType(INIT_LOAD_DASHBOARD),
         switchMap(({ payload }) => {
-            return [assaciatesResponse(payload), flightRisk(payload), pulseScore(payload), companyMood(payload), genderWise(payload), unitPulse({ type: 'unitPulseView' })]
+            return [assaciatesResponse(payload), flightRisk(payload), pulseScore(payload), companyMood(payload), genderWise(payload), unitPulse({ ...payload, type: 'EmployeeExperienceView' })]
         })
     ),
     pulseScore: (action$, state$) => action$.pipe(
@@ -123,9 +123,9 @@ export const epics = {
     ),
     unitPulse: (action$, state$) => action$.pipe(
         ofType(UNIT_PULSE),
-        switchMap(({ payload }) => {
+        switchMap(({ payload: { Technology, Location, Department, type } }) => {
             return from(
-                axios.post(Services.baseUrl + Services.unitPulseView, payload, {
+                axios.post(Services.baseUrl + Services.unitPulseView + `?Technology=${Technology}&Location=${Location}&Department=${Department}`, { type }, {
                     headers: {
                         'Content-Type': 'application/json'
                     }

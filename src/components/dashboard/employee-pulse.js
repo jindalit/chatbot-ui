@@ -4,12 +4,12 @@ import './style.css'
 
 let totalRating = 0
 const pulseName = {
-    StronglyDisagreeCount: 'Strongly Disengage',
-    DisagreeCount: 'Disengage',
-    SomewhatDisagreeCount: 'Somewhat Disengage',
-    SomewhatAgreeCount: 'Somewhat Engage',
-    AgreeCount: 'Engage',
-    StronglyAgreeCount: 'Strongly Engage'
+    StronglyDisagreeCount: 'Strongly Disengaged',
+    DisagreeCount: 'Disengaged',
+    SomewhatDisagreeCount: 'Somewhat Disengaged',
+    SomewhatAgreeCount: 'Somewhat Engaged',
+    AgreeCount: 'Engaged',
+    StronglyAgreeCount: 'Strongly Engaged'
 }
 export default (props) => {
     const { pulseScore } = props
