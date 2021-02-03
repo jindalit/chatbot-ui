@@ -2,3 +2,112 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.section-card {
+  padding: 10px;
+  background: #ffffff;
+  border-radius: 4px;  
+}
+.section-card h5{
+  border-bottom: 0;
+}
+.icon-emonji {
+  width:120px;
+  height:85px;
+  margin-top: 5px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: top center;
+    background-size: 25%;
+}
+.icon-angry {  
+  background-image: url(/images/angry.svg);
+}
+.icon-angry-full {
+  background-image: url(/images/angry-full.svg);
+}
+.icon-emonji::after{
+  position: absolute;
+  top: 38px;
+  text-align: center;
+  left: 5%;
+}
+.icon-angry::after, .icon-angry-full::after{
+  content: 'Strongly Disengaged';  
+}
+.icon-bad {  
+  background-image: url(/images/sad.svg);
+}
+.icon-bad-full {
+  background-image: url(/images/sad-full.svg);
+}
+.icon-bad::after, .icon-bad-full::after{
+  content: 'Disengaged'; 
+  left: 15%; 
+}
+.icon-ok {  
+  background-image: url(/images/ok.svg);
+}
+.icon-ok-full {
+  background-image: url(/images/ok-full.svg);
+}
+.icon-ok::after, .icon-ok-full::after{
+  content: 'Somewhat Disengaged';  
+  left: 5%;
+}
+.icon-happy {  
+  background-image: url(/images/happy.svg);
+}
+.icon-happy-full {
+  background-image: url(/images/happy-full.svg);
+  
+}
+.icon-happy::after, .icon-happy-full::after{
+  content: 'Somewhat Engaged';  
+  left: 5%;
+}
+.icon-great {  
+  background-image: url(/images/great.svg);
+}
+.icon-great-full {
+  background-image: url(/images/great-full.svg);
+}
+.icon-great::after, .icon-great-full::after{
+  content: 'Engaged';  
+  left: 20%
+}
+
+.icon-strongly-agree {  
+  background-image: url(/images/strongly-agree-blank.svg);
+}
+.icon-strongly-agree-full {
+  background-image: url(/images/strongly-agree.svg);
+}
+.icon-strongly-agree::after, .icon-strongly-agree-full::after{
+  content: 'Strongly Engaged';  
+}
+.feedback-content {
+  position: relative;
+  height: calc(100vh - 17rem);
+  padding: 1.4rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.filter-btn {
+  color: #888585 ;
+  border-color: #888585;
+  margin-right: 5px;
+}
+.dropdown-menu.show{
+  bottom: 94px;
+    top: auto;
+    width:100%
+}
+.dropdown-menu a:hover {
+  color: blue ;
+  cursor: pointer;
+}.navlink a.active button, .employee-level p.active {
+  color:blue;
+  cursor: pointer;
+}.employee-level p{
+  cursor: pointer;
+}
