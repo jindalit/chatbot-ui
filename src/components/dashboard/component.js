@@ -59,10 +59,10 @@ export default (props) => {
                         <div className="col-sm-12 col-lg-6 pr-1">
                             <UnitPulse unitPulse={props.getUnitPulse} employeeExperienceView={props.getEmployeeExperienceView} updatePulseType={updatePulseType} />
                         </div>
-                        <div className='col-sm-6 col-lg-3 pr-1'>
+                        <div className='col-sm-6 col-lg-4 pr-1'>
                             <GenderView getGenderWise={props.getGenderWise} />
                         </div>
-                        <div className='col-sm-6 col-lg-3 pr-1'>
+                        <div className='col-sm-6 col-lg-2 pr-1'>
                             <WordCloud />
                         </div>
 

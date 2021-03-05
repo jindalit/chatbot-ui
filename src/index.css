@@ -32,7 +32,7 @@ code {
   left: 5%;
 }
 .icon-angry::after, .icon-angry-full::after{
-  content: 'Strongly Disengaged';  
+  content: 'Strongly Disagree';  
 }
 .icon-bad {  
   background-image: url(/images/sad.svg);
@@ -41,8 +41,8 @@ code {
   background-image: url(/images/sad-full.svg);
 }
 .icon-bad::after, .icon-bad-full::after{
-  content: 'Disengaged'; 
-  left: 15%; 
+  content: 'Disagree'; 
+  left: 22%; 
 }
 .icon-ok {  
   background-image: url(/images/ok.svg);
@@ -51,7 +51,7 @@ code {
   background-image: url(/images/ok-full.svg);
 }
 .icon-ok::after, .icon-ok-full::after{
-  content: 'Somewhat Disengaged';  
+  content: 'Somewhat Disagree';  
   left: 5%;
 }
 .icon-happy {  
@@ -62,7 +62,7 @@ code {
   
 }
 .icon-happy::after, .icon-happy-full::after{
-  content: 'Somewhat Engaged';  
+  content: 'Somewhat Agree';  
   left: 5%;
 }
 .icon-great {  
@@ -72,8 +72,8 @@ code {
   background-image: url(/images/great-full.svg);
 }
 .icon-great::after, .icon-great-full::after{
-  content: 'Engaged';  
-  left: 20%
+  content: 'Agree';  
+  left: 30%
 }
 
 .icon-strongly-agree {  
@@ -83,7 +83,7 @@ code {
   background-image: url(/images/strongly-agree.svg);
 }
 .icon-strongly-agree::after, .icon-strongly-agree-full::after{
-  content: 'Strongly Engaged';  
+  content: 'Strongly Agree';  
 }
 .feedback-content {
   position: relative;
@@ -110,4 +110,5 @@ code {
   cursor: pointer;
 }.employee-level p{
   cursor: pointer;
+  font-size: 1.2em;
 }

@@ -44,13 +44,14 @@ export default (props) => {
         }
     }, [flightRisk])
     return (
-        <div className="card">
+        <div className="card" style={{ maxHeight: '378px' }}>
             <div className="card-header d-flex justify-content-between">
                 <div className="header-title">
                     <h6 className="card-title">Flight Risk Analysis View
                     </h6>
                 </div>
             </div>
+            <span className='clickhere'>Click here to view</span>
             {data.length !== 0 &&
                 <div className="card-body">
                     <PieChart width={160} height={160}>

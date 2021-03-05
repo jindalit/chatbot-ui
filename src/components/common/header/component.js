@@ -14,15 +14,15 @@ const Header = (props) => {
                 <div className="iq-navbar-logo d-flex align-items-center justify-content-between">
                     <i className="ri-menu-line wrapper-menu"></i>
                     <Link to="/" className="header-logo">
-                        <img src={process.env.PUBLIC_URL + "images/logo.jpg"} className="img-fluid rounded-normal light-logo" alt="logo" />
+                        <img src={process.env.PUBLIC_URL + "/images/logo.jpg"} className="img-fluid rounded-normal light-logo" alt="logo" />
 
                     </Link>
                 </div>
                 <div className="iq-search-bar device-search">
                     <form action="#" className="searchbox">
-                        <a className="search-link" href="#"><i className="ri-search-line"></i></a>
+                        {/* <a className="search-link" href="#"><i className="ri-search-line"></i></a>
                         <input type="text" className="text search-input" placeholder="Search here..." style={{ width: "54%" }} />
-                        <div className="form-group navlink" style={{ position: 'absolute', display: 'inline-block', width: '509px', marginTop: '2px', marginLeft: '7px' }}>
+                         */}<div className="form-group navlink" style={{ position: 'absolute', display: 'inline-block', width: '509px', marginTop: '2px', marginLeft: '7px' }}>
                             <NavLink to="/" exact activeClassName="active"><button type="submit" className="btn btn-default btn-submit">Engagement</button></NavLink>
                             <NavLink to="/attrition" activeClassName="active"><button type="submit" className="btn btn-default btn-submit">Attrition</button></NavLink>
                             <NavLink to="/scorecard" activeClassName="active"><button type="submit" className="btn btn-default btn-submit">Employee Experience Scorecard</button></NavLink>

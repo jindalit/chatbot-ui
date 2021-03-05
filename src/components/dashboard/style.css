@@ -10,6 +10,9 @@
     border-radius: 5px;
     position: relative;
 }
+.pulseText .mood {
+  font-weight: bold;
+}
 .emonji {
     position: absolute;
     left: 30%;
@@ -19,9 +22,25 @@
     display: inline-block;
 }
 .lgf-progress-text .emonji{
-  top:20%;
-  left:32%;
+  background-size: 25%;
+  top:14%;
+  left:38%;
   background-repeat:no-repeat ;
+}
+.lgf-progress-text h4{
+  margin-top: 70px;
+}
+.lgf-progress-text h4 i{
+  font-size: .3em;
+  color: red;
+  font-weight: bold;
+}
+.clickhere {
+  color:blue;
+  font-size: .85em;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 5px;
 }
 .wave {
     width:100%;
@@ -35,58 +54,59 @@
     border-color: #D80000;    
 }
 .stronglydisagree span.emonji {
-    background-image: url(/images/angry-full.svg);
+    background-image: url(/chatbot-ui/images/angry-full.svg);
 }
 .stronglydisagree span.wave {
-    background-image: url(/images/angry-wave.png);
+    background-image: url(/chatbot-ui/images/angry-wave.png);
 }
 .disagree {
     border-color: #FF5607;    
 }
 .disagree span {
-    background-image: url(/images/sad-full.svg);
+    background-image: url(/chatbot-ui/images/sad-full.svg);
 }
 .disagree span.wave {
-    background-image: url(/images/sad-wave.png);
+    background-image: url(/chatbot-ui/images/sad-wave.png);
 }
 .somewhatdisagree {
     border-color: #FF9800;    
 }
 .somewhatdisagree span {
-    background-image: url(/images/ok-full.svg);
+    background-image: url(/chatbot-ui/images/ok-full.svg);
 }
 .somewhatdisagree span.wave {
-    background-image: url(/images/ok-wave.png);
+    background-image: url(/chatbot-ui/images/ok-wave.png);
 }
 .somewhatagree {
     border-color: #FFC100;    
 }
 .somewhatagree span {
-    background-image: url(/images/happy-full.svg);
+    background-image: url(/chatbot-ui/images/happy-full.svg);
 }
 .somewhatagree span.wave {
-    background-image: url(/images/happy-wave.png);
+    background-image: url(/chatbot-ui/images/happy-wave.png);
 }
 .agree {
     border-color:#c5d647;    
 }
 .agree span {
-    background-image: url(/images/great-full.svg);
+    background-image: url(/chatbot-ui/images/great-full.svg);
 }
 .agree span.wave {
-    background-image: url(/images/great-wave.png);
+    background-image: url(/chatbot-ui/images/great-wave.png);
 }
 .stronglyagree {
     border-color: #79c267;    
 }
 .stronglyagree span {
-    background-image: url(/images/strongly-agree.svg);
+    background-image: url(/chatbot-ui/images/strongly-agree.svg);
 }
 .stronglyagree span.wave {
-    background-image: url(/images/strongly-agree-wave.png);
+    background-image: url(/chatbot-ui/images/strongly-agree-wave.png);
 }
 .pulseText {
     text-align: center;
+    width: 100%;
 }
 .barChart {
     width: 100%;
@@ -98,7 +118,7 @@
     margin-left: 7px;
     text-align: center;
 }.newset span {
-    font-size: 18px;
+    font-size: 2rem;
     font-weight: 600;
     text-align: center;
 }
@@ -106,9 +126,9 @@
     padding-bottom: 15px;
 }
 .newset span + span {
-    font-size: 11px;
+    font-size: .75rem;
     text-align: center;
-    line-height: 36px;
+    line-height: 20px;
 }
 #NavLinks-Attrition ul {
     border-bottom: 0.2rem solid #fff;;
@@ -132,21 +152,22 @@
     color: #000;
   }
   #attrition-predictor-type ul li small {
-    font-size: 0.6rem;
+    font-size:.8em;
   }
   #attrition-predictor-type ul li:hover h5, #attrition-predictor-type ul li:hover i {
     color: #03767e;
   }
   .critical-emp-div-1 > b {
-    font-size: .9rem;
-    color: #fb609d;
+    font-size: 2.4rem;
+    color: #003696;
+    
   }
   .critical-emp-div-2 > b {
-    font-size: .9rem;
-    color: #003696;
+    font-size: 2.4rem;
+    color: #fb609d;
   }
   .critical-emp-div-1 p, .critical-emp-div-2 p {
-    font-size: 0.65rem;
+    font-size: 1rem;
   }
   .grade-wise-div-1 > h5 {
     font-weight: 900;
@@ -178,13 +199,13 @@
   .table th{text-transform: uppercase;}
   .table td, .table th {
     border: 0 !important;
-    font-size: 0.75rem !important;
+    font-size: 1.25rem !important;
   }
   .pagination {
     font-size: 0.6rem;
   }
   .profile-icon-svg {
-      background:url(/images/profile.svg);
+      background:url(/chatbot-ui/images/profile.svg);
   }
   .a{fill:#eb4a8a;}.b{fill:#003696;}.c{fill:#ec9e00;}
   .a-icon2{fill:#fe721c;}.b-icon2{fill:#ffca44;}
@@ -194,35 +215,37 @@
   .percentage-card {
     box-shadow: 0 0 5px 0 rgba(0,0,0,.0392157);
   }
-  .emp-card-1.card {
+  .emp-card-1 {
     background-color: #f3cfcb;
-    font-family: 'Oswald', sans-serif;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    -ms-box-shadow: 0 16px 40px 0 rgba(0,0,0,.0392157);
+    -o-box-shadow: 0 16px 40px 0 rgba(0,0,0,.0392157);
+    box-shadow: 0 16px 40px 0 rgba(0,0,0,.0392157);
   }
-  .emp-card-1.card .recharts-wrapper, .emp-card-2.card .recharts-wrapper {
+  .emp-card-1 .recharts-wrapper, .emp-card-2 .recharts-wrapper {
     margin: 0 auto
   }
-  .emp-card-2.card {
+  .emp-card-2 {
     background-color: #f1e9ce;
-    font-family: 'Oswald', sans-serif;
-  }
-  .emp-card-text{
-    font-family: 'Oswald', sans-serif;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    -ms-box-shadow: 0 16px 40px 0 rgba(0,0,0,.0392157);
+    -o-box-shadow: 0 16px 40px 0 rgba(0,0,0,.0392157);
+    box-shadow: 0 16px 40px 0 rgba(0,0,0,.0392157);
   }
   .emp-card-text > p {
     color: #e36a1f;
     font-weight: 700;
-    font-size: 0.85rem;
+    font-size: 1.8rem;
   }
   .emp-card-text .emp-card-description > p{
-    font-size: 0.6rem;
-    font-weight: 600;
-    font-family: 'Roboto', sans-serif;
+    font-size: 1.3rem;
   }
-  .emp-card-text .emp-card-description > small {
-    width: 70%;
-    font-size: 0.6rem;
+  .emp-card-description small{
+    font-size: 1.3rem;
   }
-  .emp-card-text .emp-card-description > p > b {
+  .emp-card-text .emp-card-description > p > b, .emp-card-description small > b {
     color: #e36a1f;
   }
   .emp-card-text > div > a {
@@ -230,7 +253,7 @@
   }
   .emp-loader-text {
     padding: 0 1rem;
-    font-size: 0.75rem;
+    font-size: 1rem;
   }
   
   
@@ -283,7 +306,7 @@
   }
   
   .lgf-progress-small .lgf-progress-text h6 {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     font-weight: 600 !important;
   }
   
@@ -291,7 +314,9 @@
       font-size: 0.6rem !important;
       width: 100%;
   }
-  
+  .emp-card-1 .lgf-progress-text span, .emp-card-2 .lgf-progress-text span{
+    font-size: 1rem !important;
+  }
    .lgf-progress .lgf-progress-left {
        left: 0;
   }
@@ -470,29 +495,39 @@
   .lgf-progress.width-20 .lgf-progress-text h6 {
     font-size: 0.9rem !important;
   }
+  .header-title {
+    width:100%;
+  }
   .lgf-progress.width-20 .lgf-progress-text span {
     font-size: 0.5rem !important;
   }
   
 .gender-section {
-  margin:60px 0px;
-  display: flex;
-  font-size: 13px;
-  text-align: center;
-  font-weight: bold;
-  color: #FF9800;
-  align-items: center;
-  justify-content: center;
+ text-align: center;
+ font-size: 1.5em;
+ font-weight: bold;
+ margin: 35px 0;
+ line-height: .65em;
+    align-items: center;
 }
+.predictor-type {
+  width: 100%
+}
+
 .gender-section img {
   height: 70px;
 }
 .gender-section div span {
-  color:#c5d647; 
+  color: blue;
+  font-size: .65em;
+  display: block;
+  margin: 10px 0 0;
 }
 .predictor-type li {
   cursor: pointer;
   padding:2px 1px;
+  width: 33%;
+  float: left;
 }
 .predictor-type li.active {
   background:#f3cfcb;

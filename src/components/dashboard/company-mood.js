@@ -16,14 +16,16 @@ const getClassName = ratingName => {
 export default (props) => {
 
     return (
-        <div className="card">
+        <div className="card" style={{ minHeight: '378px' }}>
             <div className="card-header d-flex justify-content-between">
                 <div className="header-title">
                     <h6 className="card-title">Overall Company View
                     </h6>
                 </div>
             </div>
+            <span className='clickhere'>Click here to view</span>
             <div className="card-body">
+
                 <div className="lgf-progress" data-percentage={props.companyMood && Math.ceil((props.companyMood.overAllMood * 10) / 10) * 10}>
                     <span className="lgf-progress-left">
                         <span className="lgf-progress-bar lgf-progress--orange"></span>
@@ -33,7 +35,7 @@ export default (props) => {
                     </span>
                     <div className="lgf-progress-value">
                         {props.companyMood && <div className="lgf-progress-text">
-                            <h6><br /><br />{props.companyMood.overAllMood}</h6>
+                            <h4>{props.companyMood.overAllMood}<i className='ri-heart-3-fill'></i></h4>
                             <div className={getClassName(props.companyMood.ratingName)}>
                                 <span className='emonji'></span>
                             </div>
@@ -41,15 +43,8 @@ export default (props) => {
                         }
                     </div>
                 </div>
-
+                <h6>Employee Engagement Score</h6>
             </div>
-            {/* <div class="progress-value">
-                <span class="newset">&bull; Quality Of Work</span>
-                <span class="newset">&bull; Team</span>
-                <span class="newset">&bull; Leadership</span>
-                <span class="newset">&bull; Manager</span>
-                <span class="newset">&bull; Career Development</span>
-            </div> */}
         </div >
     )
 }

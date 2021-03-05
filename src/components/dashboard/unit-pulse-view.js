@@ -14,13 +14,13 @@ const empName = {
     career: 'Career',
     culture: 'Culture',
     'customer': 'Customer',
-    'decisionMaking': 'DecisionMaking',
-    'employeeRole': 'EmployeeRole',
+    'decisionMaking': 'Decision-Making',
+    'employeeRole': 'Role',
     'leadership': 'Leadership',
     'manager': 'Manager',
-    'performanceManagement': 'PerformanceManagement',
-    'processPolicy': 'ProcessPolicy',
-    'teamWork': 'TeamWork'
+    'performanceManagement': 'Performance-Management',
+    'processPolicy': 'Process-Policy',
+    'teamWork': 'Team-Work'
 }
 let data = []
 
@@ -29,12 +29,12 @@ const CustomTooltip = ({ active, payload, label }) => {
         return (
             <div className="custom-tooltip">
                 <p className="label">{label}</p>
-                <p className="intro">{`Strongly Disengaged: ${payload[0].payload.stronglyDisengage} Employees`}</p>
-                <p className="desc">{`Disengaged: ${payload[0].payload.disengage} Employees`}</p>
-                <p className="desc">{`Somewhat Disengaged: ${payload[0].payload.somewhatDisengage} Employees`}</p>
-                <p className="desc">{`Somewhat Engaged: ${payload[0].payload.somewhatEngage} Employees`}</p>
-                <p className="desc">{`Engaged: ${payload[0].payload.Engage} Employees`}</p>
-                <p className="desc">{`Strongly Engaged: ${payload[0].payload.stronglyEngage} Employees`}</p>
+                <p className="intro">{`Strongly Disengaged: ${payload[0].payload.stronglyDisengageEmployee} Employees`}</p>
+                <p className="desc">{`Disengaged: ${payload[0].payload.disengageEmployee} Employees`}</p>
+                <p className="desc">{`Somewhat Disengaged: ${payload[0].payload.somewhatDisengageEmployee} Employees`}</p>
+                <p className="desc">{`Somewhat Engaged: ${payload[0].payload.somewhatEngageEmployee} Employees`}</p>
+                <p className="desc">{`Engaged: ${payload[0].payload.engageEmployee} Employees`}</p>
+                <p className="desc">{`Strongly Engaged: ${payload[0].payload.stronglyEngageEmployee} Employees`}</p>
             </div>
         );
     }
@@ -43,8 +43,8 @@ const CustomTooltip = ({ active, payload, label }) => {
 };
 export default (props) => {
     const [pulseData, setPulseData] = useState([])
-    const [type, setType] = useState('Employee Experience View')
-    const [leftMargin, setLeftMargin] = useState(170)
+    const [type, setType] = useState('Employee Engagement Drivers')
+    const [leftMargin, setLeftMargin] = useState(130)
     useEffect(() => {
         const { unitPulse } = props
         data = []
@@ -73,7 +73,7 @@ export default (props) => {
             setLeftMargin(70)
             props.updatePulseType('unitPulseView')
         } else {
-            setLeftMargin(170)
+            setLeftMargin(130)
             props.updatePulseType('EmployeeExperienceView')
         }
     }
@@ -90,6 +90,7 @@ export default (props) => {
                     </select>
                 </div> */}
             </div>
+            <span className='clickhere'>Click here to view</span>
             {data.length !== 0 &&
                 <ResponsiveContainer>
                     <BarChart
@@ -103,12 +104,12 @@ export default (props) => {
                         <XAxis type="number" interval={0} />
                         <YAxis dataKey="name" interval={0} type="category" />
                         <Tooltip content={<CustomTooltip />} />
-                        <Bar stackId="0" dataKey="stronglyDisengage" maxBarSize={20} fill="#D80000" radius={[10, 0, 0, 10]} />
-                        <Bar stackId="0" dataKey="disengage" maxBarSize={20} fill="#FF5607" />
-                        <Bar dataKey="somewhatDisengage" stackId='0' maxBarSize={20} fill="#FF9800" />
-                        <Bar stackId="0" dataKey="somewhatEngage" maxBarSize={20} fill="#FFC100" />
-                        <Bar stackId="0" dataKey="Engage" maxBarSize={20} fill="#c5d647" />
-                        <Bar stackId="0" dataKey="stronglyEngage" maxBarSize={20} fill="#79c267" radius={[0, 10, 10, 0]} />
+                        <Bar stackId="0" dataKey="stronglyDisengageEmployee" maxBarSize={20} fill="#D80000" radius={[10, 0, 0, 10]} />
+                        <Bar stackId="0" dataKey="disengageEmployee" maxBarSize={20} fill="#FF5607" />
+                        <Bar dataKey="somewhatDisengageEmployee" stackId='0' maxBarSize={20} fill="#FF9800" />
+                        <Bar stackId="0" dataKey="somewhatEngageEmployee" maxBarSize={20} fill="#FFC100" />
+                        <Bar stackId="0" dataKey="engageEmployee" maxBarSize={20} fill="#c5d647" />
+                        <Bar stackId="0" dataKey="stronglyEngageEmployee" maxBarSize={20} fill="#79c267" radius={[0, 10, 10, 0]} />
                     </BarChart >
                 </ResponsiveContainer>
             }
