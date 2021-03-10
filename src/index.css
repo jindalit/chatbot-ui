@@ -20,10 +20,10 @@ code {
     background-size: 25%;
 }
 .icon-angry {  
-  background-image: url(/images/angry.svg);
+  background-image: url(/chatbot-ui/images/angry.svg);
 }
 .icon-angry-full {
-  background-image: url(/images/angry-full.svg);
+  background-image: url(/chatbot-ui/images/angry-full.svg);
 }
 .icon-emonji::after{
   position: absolute;
@@ -35,30 +35,30 @@ code {
   content: 'Strongly Disagree';  
 }
 .icon-bad {  
-  background-image: url(/images/sad.svg);
+  background-image: url(/chatbot-ui/images/sad.svg);
 }
 .icon-bad-full {
-  background-image: url(/images/sad-full.svg);
+  background-image: url(/chatbot-ui/images/sad-full.svg);
 }
 .icon-bad::after, .icon-bad-full::after{
   content: 'Disagree'; 
   left: 22%; 
 }
 .icon-ok {  
-  background-image: url(/images/ok.svg);
+  background-image: url(/chatbot-ui/images/ok.svg);
 }
 .icon-ok-full {
-  background-image: url(/images/ok-full.svg);
+  background-image: url(/chatbot-ui/images/ok-full.svg);
 }
 .icon-ok::after, .icon-ok-full::after{
   content: 'Somewhat Disagree';  
   left: 5%;
 }
 .icon-happy {  
-  background-image: url(/images/happy.svg);
+  background-image: url(/chatbot-ui/images/happy.svg);
 }
 .icon-happy-full {
-  background-image: url(/images/happy-full.svg);
+  background-image: url(/chatbot-ui/images/happy-full.svg);
   
 }
 .icon-happy::after, .icon-happy-full::after{
@@ -66,10 +66,10 @@ code {
   left: 5%;
 }
 .icon-great {  
-  background-image: url(/images/great.svg);
+  background-image: url(/chatbot-ui/images/great.svg);
 }
 .icon-great-full {
-  background-image: url(/images/great-full.svg);
+  background-image: url(/chatbot-ui/images/great-full.svg);
 }
 .icon-great::after, .icon-great-full::after{
   content: 'Agree';  
@@ -77,10 +77,10 @@ code {
 }
 
 .icon-strongly-agree {  
-  background-image: url(/images/strongly-agree-blank.svg);
+  background-image: url(/chatbot-ui/images/strongly-agree-blank.svg);
 }
 .icon-strongly-agree-full {
-  background-image: url(/images/strongly-agree.svg);
+  background-image: url(/chatbot-ui/images/strongly-agree.svg);
 }
 .icon-strongly-agree::after, .icon-strongly-agree-full::after{
   content: 'Strongly Agree';  
