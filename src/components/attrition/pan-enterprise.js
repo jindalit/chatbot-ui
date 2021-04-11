@@ -105,12 +105,12 @@ export default (props) => {
         <div className="card card-body">
             <div className="row d-flex justify-content-between">
 
-                <div className="col-8 h-100">
-                    <div className="">
+                <div className="col-12 h-100">
+                    <div className="mb-2">
                         <h3 className="text-center">Pan Enterprise Employees at high flight risk</h3>
                     </div>
                     <div className="d-flex">
-                        {defaultVal && employeeRisk.flightHighRisk && <div className="card card-body emp-card-1 percentage-card mr-1 align-self-center">
+                        {defaultVal && employeeRisk.flightHighRisk && <div className="d-flex card-body emp-card-1 percentage-card mr-1 align-self-center">
 
                             <div className="lgf-progress" data-percentage={Math.ceil(employeeRisk.flightHighRisk.highRiskPercentage / 10) * 10}>
                                 <span className="lgf-progress-left">
@@ -122,7 +122,7 @@ export default (props) => {
                                 <div className="lgf-progress-value">
                                     <div className="lgf-progress-text">
                                         <h6>{employeeRisk.flightHighRisk.highRiskPercentage}%</h6>
-                                        <span>Employee Percentage</span>
+                                        <span>Employee <br /><br /><br /> Percentage</span>
                                     </div>
                                 </div>
                             </div>
@@ -130,11 +130,11 @@ export default (props) => {
                                 <p>Above {employeeRisk.flightHighRisk.highRiskPercentage}%</p>
                                 <div className="emp-card-description py-3">
                                     <p className="m-1"><b className="bold-danger">{employeeRisk.flightHighRisk.highRiskPercentage}% ({employeeRisk.flightHighRisk.totalHighRiskEmployee}/{employeeRisk.totalAssociate})</b> Employee is at <b className="bold-danger">high risk</b></p>
-                                    <small>You need to focus on {employeeRisk.flightHighRisk.highRiskPercentage}% Employee on priority basis</small>
+                                    You need to focus on {employeeRisk.flightHighRisk.highRiskPercentage}% Employee on priority basis
                                 </div>
                             </div>
                         </div>}
-                        {!defaultVal && <div className="card card-body emp-card-1 percentage-card mr-1 align-self-center">
+                        {!defaultVal && <div className="d-flex card-body emp-card-1 percentage-card mr-1 align-self-center">
                             <PieChart width={180} height={180}>
                                 <Pie
                                     data={predictorData.high}
@@ -150,7 +150,7 @@ export default (props) => {
                                             <Cell key={`slice-${index}`} fill={colors[index]} />
                                         ))
                                     }
-                                    <Label width={50} position="center" style={{ fontSize: '1em', }}>
+                                    <Label width={50} position="center" style={{ fontSize: '1.2em', }}>
                                         High Risk Employees
                                     </Label>
                                 </Pie>
@@ -159,7 +159,7 @@ export default (props) => {
                             {htmlData}
                         </div>}
                         {defaultVal && employeeRisk.flightMediumRisk &&
-                            <div className="card card-body emp-card-2 percentage-card align-self-center">
+                            <div className="card-body d-flex emp-card-2 percentage-card align-self-center">
                                 <div className="lgf-progress" data-percentage={Math.ceil(employeeRisk.flightMediumRisk.mediumRiskPercentage / 10) * 10}>
                                     <span className="lgf-progress-left">
                                         <span className="lgf-progress-bar lgf-progress--warning"></span>
@@ -170,7 +170,7 @@ export default (props) => {
                                     <div className="lgf-progress-value">
                                         <div className="lgf-progress-text">
                                             <h6>{employeeRisk.flightMediumRisk.mediumRiskPercentage}%</h6>
-                                            <span>Employee Percentage</span>
+                                            <span>Employee<br /><br /><br /> Percentage</span>
                                         </div>
                                     </div>
                                 </div>
@@ -179,11 +179,11 @@ export default (props) => {
                                     <p>Between {employeeRisk.flightMediumRisk.mediumRiskPercentage}% to {employeeRisk.flightMediumRisk.mediumRiskPercentage + 10}%</p>
                                     <div className="emp-card-description py-3">
                                         <p className="m-1"><b>{employeeRisk.flightMediumRisk.mediumRiskPercentage}% ({employeeRisk.flightMediumRisk.totalMediumRiskEmployee}/{employeeRisk.totalAssociate})</b> Employee is at <b>medium risk</b></p>
-                                        <small>You need to focus on {employeeRisk.flightMediumRisk.mediumRiskPercentage}% Employee on priority basis</small>
+                                        You need to focus on {employeeRisk.flightMediumRisk.mediumRiskPercentage}% Employee on priority basis
                                     </div>
                                 </div>
                             </div>}
-                        {!defaultVal && <div className="card card-body emp-card-2 percentage-card align-self-center">
+                        {!defaultVal && <div className="d-flex card-body emp-card-2 percentage-card align-self-center">
                             <PieChart width={180} height={180}>
                                 <Pie
                                     data={predictorData.medium}
@@ -199,7 +199,7 @@ export default (props) => {
                                             <Cell key={`slice-${index}`} fill={colors2[index]} />
                                         ))
                                     }
-                                    <Label width={50} position="center" style={{ fontSize: '1em', }}>
+                                    <Label width={50} position="center" style={{ fontSize: '1.2em', }}>
                                         Medimun Risk Employees
                                     </Label>
                                 </Pie>
@@ -209,7 +209,9 @@ export default (props) => {
                         </div>}
                     </div>
                 </div>
-                <div className="col-4">
+            </div>
+            <div className="row">
+                <div className="col-12">
                     <div className="card card-block card-stretch card-height" id="attrition-predictor-type">
                         <div className="card-header">
                             <div className="header-title">
@@ -221,71 +223,61 @@ export default (props) => {
                                 <a href="#">
                                     <li className={"d-flex align-items-center mb-3 " + (type === 'age' ? 'active' : '')} onClick={() => predictorType('age')}>
                                         <div className="profile-icon iq-icon-box rounded-small text-center">
-                                            <img src={process.env.PUBLIC_URL + 'images/age-group.PNG'} />
+                                            <img src={process.env.PUBLIC_URL + '/images/age-group.PNG'} />
                                         </div>
                                         <div className="pl-3 w-100">
                                             <h5>Age Group</h5>
                                             <small>Employee age between 30+ and 80</small>
                                         </div>
-                                        <div className="pull-right">
-                                            <i className="fa fa-angle-right fa-2x"></i>
-                                        </div>
+
                                     </li>
                                 </a>
                                 <a href="#">
                                     <li className={"d-flex align-items-center mb-3 " + (type === 'performers' ? 'active' : '')} onClick={() => predictorType('performers')}>
                                         <div className="profile-icon iq-icon-box rounded-small text-center">
-                                            <img src={process.env.PUBLIC_URL + 'images/performers.PNG'} />
+                                            <img src={process.env.PUBLIC_URL + '/images/performers.PNG'} />
                                         </div>
                                         <div className="pl-3 w-100">
                                             <h5>Performers</h5>
                                             <small>Employee at flight risk across performance</small>
                                         </div>
-                                        <div className="pull-right">
-                                            <i className="fa fa-angle-right fa-2x"></i>
-                                        </div>
+
                                     </li>
                                 </a>
                                 <a href="#">
                                     <li className={"d-flex align-items-center mb-3 " + (type === 'qualification' ? 'active' : '')} onClick={() => predictorType('qualification')}>
                                         <div className="profile-icon iq-icon-box rounded-small text-center">
-                                            <img src={process.env.PUBLIC_URL + 'images/educations.PNG'} />
+                                            <img src={process.env.PUBLIC_URL + '/images/educations.PNG'} />
                                         </div>
                                         <div className="pl-3 w-100">
-                                            <h5>Educations</h5>
+                                            <h5>Education</h5>
                                             <small>Employees at flight risk at qualification</small>
                                         </div>
-                                        <div className="pull-right">
-                                            <i className="fa fa-angle-right fa-2x"></i>
-                                        </div>
+
                                     </li>
                                 </a>
                                 <a href="#">
                                     <li className={"d-flex align-items-center mb-3 " + (type === 'experiance' ? 'active' : '')} onClick={() => predictorType('experiance')}>
                                         <div className="profile-icon iq-icon-box rounded-small text-center">
-                                            <img src={process.env.PUBLIC_URL + 'images/gender.PNG'} />
+                                            <img src={process.env.PUBLIC_URL + '/images/gender.PNG'} />
                                         </div>
                                         <div className="pl-3 w-100">
                                             <h5>Experience</h5>
                                             <small>Employees at flight risk at Experience</small>
                                         </div>
-                                        <div className="pull-right">
-                                            <i className="fa fa-angle-right fa-2x"></i>
-                                        </div>
+
                                     </li>
                                 </a>
                                 <a href="#">
                                     <li className={"d-flex align-items-center " + (type === 'gender' ? 'active' : '')} onClick={() => predictorType('gender')}>
                                         <div className="profile-icon iq-icon-box rounded-small text-center">
-                                            <img src={process.env.PUBLIC_URL + 'images/gender.PNG'} />
+                                            <img src={process.env.PUBLIC_URL + '/images/gender.PNG'} />
                                         </div>
                                         <div className="pl-3 w-100">
                                             <h5>Gender</h5>
                                             <small>Employees at flight risk at gender</small>
                                         </div>
-                                        <div className="pull-right">
-                                            <i className="fa fa-angle-right fa-2x"></i>
-                                        </div>
+
                                     </li>
                                 </a>
                             </ul>

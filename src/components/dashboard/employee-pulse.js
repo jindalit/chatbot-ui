@@ -41,7 +41,7 @@ export default (props) => {
                             </div>
                             <div className="pulseText">
                                 <h3 className='counter'>{scoreView[key]}</h3>
-                                <span className='mood'>{pulseName[key]}</span>
+                                <span className='mood'>Associates<br />{pulseName[key]}</span>
                             </div>
                         </div>
                     )

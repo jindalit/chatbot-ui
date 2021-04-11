@@ -9,17 +9,11 @@ const renderCustomizedLabel = (props) => {
         x, y, width, height, value,
     } = props;
 
-    const offset = 50;
-    const offset2 = 20;
+    const offset = 5;
     return (
-        <React.Fragment>
-            <text x={x + width - offset} y={y + height - 25} fill={"#fff"} textAnchor="end">
-                {value}
-            </text>
-            <text x={x + width - offset2} y={y + height - 5} fill={"#fff"} textAnchor="end">
-                Employees
+        <text x={x + width - offset} y={y + height - 10} fill={"#fff"} textAnchor="end">
+            {value}
         </text>
-        </React.Fragment>
     );
 };
 
@@ -107,88 +101,86 @@ export default (props) => {
     }, [highFlightRisk])
 
     return (
+
+
         <div className="card card-body">
             <div className="row">
-
-
-                <div className="card card-body">
-                    <div className="row">
-                        <div className="col-4 h-100">
-                            {highFlightRisk &&
-                                <div className="card">
-                                    <div className="card-header text-center pt-1 pb-2">
-                                        <div className="header-title">
-                                            <h4 className="card-title">Grade Wise High Flight Risk</h4>
-                                        </div>
-                                    </div>
-                                    <div className="card-body d-flex h-100 text-center px-4 pt-3 pb-1">
-                                        <BarChart width={320} height={250} data={gradeData}
-                                            margin={{ top: 0, right: 0, left: -20, bottom: 30 }}>
-                                            <XAxis dataKey="name" interval={0} textAnchor="end" angle={-20} />
-                                            <YAxis />
-                                            <Tooltip content={<CustomTooltip2 />} />
-                                            <Bar dataKey="total" fill="#c5d647" barSize={{ height: 26 }} >
-                                                <LabelList dataKey="total" content={renderCustomizedLabel} position="insideTop" style={{ fill: "white" }} />
-                                            </Bar>
-                                        </BarChart>
-                                    </div>
-                                    <div className="emp-card-text">
-                                        <div className="emp-card-description pt-3">
-                                            <ul className="px-3">
-                                                {gradeData.lenght !== 0 && gradeData.map(item => (
-                                                    <li className="d-flex align-items-center pb-3 border-bottom">
-                                                        <div className="profile-icon iq-icon-box rounded-small text-center">
-                                                            <div className="lgf-progress lgf-progress-small" data-percentage={Math.ceil(item.percente / 10) * 10}>
-                                                                <span className="lgf-progress-left">
-                                                                    <span className="lgf-progress-bar lgf-progress--blue">
-                                                                    </span>
-                                                                </span>
-                                                                <span className="lgf-progress-right">
-                                                                    <span className="lgf-progress-bar lgf-progress--blue">
-                                                                    </span>
-                                                                </span>
-                                                                <div className="lgf-progress-value">
-                                                                    <div className="lgf-progress-text">
-                                                                        <h6>{item.percente}%</h6>
-                                                                    </div>
-                                                                </div>
+                <div className="col-4 h-100">
+                    {highFlightRisk &&
+                        <div className="">
+                            <div className="card-header text-center pt-1 pb-2">
+                                <div className="header-title">
+                                    <h4 className="card-title">Grade Wise High Flight Risk</h4>
+                                </div>
+                            </div>
+                            <div className="card-body d-flex h-100 text-center px-4 pt-3 pb-1">
+                                <BarChart width={320} height={250} data={gradeData}
+                                    margin={{ top: 0, right: 0, left: -20, bottom: 30 }}>
+                                    <XAxis dataKey="name" interval={0} textAnchor="end" angle={-20} />
+                                    <YAxis />
+                                    <Tooltip content={<CustomTooltip2 />} />
+                                    <Bar dataKey="total" fill="#003696" barSize={{ height: 26 }} >
+                                        <LabelList dataKey="total" content={renderCustomizedLabel} position="insideTop" style={{ fill: "white" }} />
+                                    </Bar>
+                                </BarChart>
+                            </div>
+                            <div className="emp-card-text">
+                                <div className="emp-card-description pt-3">
+                                    <ul className="px-3">
+                                        {gradeData.lenght !== 0 && gradeData.map(item => (
+                                            <li className="d-flex align-items-center pb-3 border-bottom">
+                                                <div className="profile-icon iq-icon-box rounded-small text-center">
+                                                    <div className="lgf-progress lgf-progress-small" data-percentage={Math.ceil(item.percente / 10) * 10}>
+                                                        <span className="lgf-progress-left">
+                                                            <span className="lgf-progress-bar lgf-progress--blue">
+                                                            </span>
+                                                        </span>
+                                                        <span className="lgf-progress-right">
+                                                            <span className="lgf-progress-bar lgf-progress--blue">
+                                                            </span>
+                                                        </span>
+                                                        <div className="lgf-progress-value">
+                                                            <div className="lgf-progress-text">
+                                                                <h6>{item.percente}%</h6>
                                                             </div>
                                                         </div>
-                                                        <div className="emp-loader-text">
-                                                            <b>
-                                                                {item.percente}% {item.name.toUpperCase()} Employees are at high risk, You need to focus on {item.total} Employees on priority basis.</b>
+                                                    </div>
+                                                </div>
+                                                <div className="emp-loader-text">
+                                                    <b>
+                                                        {item.percente}% {item.name.toUpperCase()} Employees are at high risk, You need to focus on {item.total} Employees on priority basis.</b>
 
-                                                        </div>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>}
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>}
+                </div>
+                <div className="col-4 h-100">
+
+                    <div className="">
+                        <div className="card-header text-center pt-1 pb-2">
+                            <div className="header-title">
+                                <h4 className="card-title">Business Unit High Flight Risk</h4>
+                            </div>
                         </div>
-                        <div className="col-4 h-100">
 
-                            <div className="card">
-                                <div className="card-header text-center pt-1 pb-2">
-                                    <div className="header-title">
-                                        <h4 className="card-title">Business Unit High Flight Risk</h4>
-                                    </div>
-                                </div>
+                        <div className="card-body" style={{ height: "300px" }}>
 
-                                <div className="card-body" style={{ height: "300px" }}>
+                            <BarChart width={320} height={250} data={data}
+                                margin={{ top: 0, right: 0, left: -20, bottom: 30 }}>
+                                <XAxis dataKey="name" interval={0} textAnchor="end" angle={-20} />
+                                <YAxis />
+                                <Tooltip content={<CustomTooltip />} />
+                                <Bar dataKey="value" fill="#003696">
+                                    <LabelList dataKey="value" content={renderCustomizedLabel2} position="insideTop" style={{ fill: "white" }} />
+                                </Bar>
+                            </BarChart>
+                        </div>
 
-                                    <BarChart width={320} height={250} data={data}
-                                        margin={{ top: 0, right: 0, left: -20, bottom: 30 }}>
-                                        <XAxis dataKey="name" interval={0} textAnchor="end" angle={-20} />
-                                        <YAxis />
-                                        <Tooltip content={<CustomTooltip />} />
-                                        <Bar dataKey="value" fill="#8884d8">
-                                            <LabelList dataKey="value" content={renderCustomizedLabel2} position="insideTop" style={{ fill: "white" }} />
-                                        </Bar>
-                                    </BarChart>
-                                </div>
-
-                                {/* <div className="business-unit-text py-3 px-3">
+                        {/* <div className="business-unit-text py-3 px-3">
                                     <div className="d-flex justify-content-center px-3">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 105 101.656">
 
@@ -224,111 +216,108 @@ export default (props) => {
                                     </div>
 
                                 </div> */}
+                    </div>
+                </div>
+                <div className="col-4 h-100">
+                    <div className="">
+                        <div className="card-header text-center pt-1 pb-2">
+                            <div className="header-title">
+                                <h4 className="card-title">Critical Employee High Flight Risk</h4>
                             </div>
                         </div>
-                        <div className="col-4 h-100">
-                            <div className="card">
-                                <div className="card-header text-center pt-1 pb-2">
-                                    <div className="header-title">
-                                        <h4 className="card-title">Critical Employee High Flight Risk</h4>
-                                    </div>
+                        <div className="card-body d-flex h-100 text-center px-4 pt-3 pb-1">
+                            <div className="col-4">
+                                <div className="critical-emp-div-1 text-right">
+                                    <b>{employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage}%</b>
+                                    <p>Critical Employee</p>
                                 </div>
-                                <div className="card-body d-flex h-100 text-center px-4 pt-3 pb-1">
-                                    <div className="col-4">
-                                        <div className="critical-emp-div-1 text-right">
-                                            <b>{employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage}%</b>
-                                            <p>Critical Employee</p>
-                                        </div>
-                                    </div>
-                                    <div className="col-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" viewBox="0 0 53.987 58.115">
+                            </div>
+                            <div className="col-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="60" viewBox="0 0 53.987 58.115">
 
-                                            <g transform="translate(-9494.008 -1366.901)">
-                                                <g transform="translate(9494.008 1366.901)">
-                                                    <g transform="translate(0)">
-                                                        <path className="a-icon2" d="M46.077,56.721a7.77,7.77,0,1,0-7.769-7.77A7.769,7.769,0,0,0,46.077,56.721Z" transform="translate(-34.807 -41.182)">
-                                                        </path>
-                                                        <path className="a-icon2" d="M37.255,138.967H20.017a2.652,2.652,0,0,0-2.644,2.855l1.223,15.9a2.651,2.651,0,0,0,.868,1.766L22.254,162v16.079a2.652,2.652,0,0,0,2.652,2.652h1.161a2.653,2.653,0,0,0,2.569-1.992,2.653,2.653,0,0,0,2.569,1.992h1.161a2.652,2.652,0,0,0,2.652-2.652V162l2.79-2.517a2.651,2.651,0,0,0,.868-1.766l1.223-15.9a2.652,2.652,0,0,0-2.643-2.855Z" transform="translate(-17.365 -122.62)">
-                                                        </path>
-                                                        <circle className="b-icon2" cx="7.77" cy="7.77" r="7.77" transform="translate(33.118 0)">
-                                                        </circle>
-                                                        <path className="b-icon2" d="M282.1,168.91l-2.676-15.762.872-11.326a2.653,2.653,0,0,0-2.644-2.855H260.409a2.652,2.652,0,0,0-2.644,2.855l.872,11.329-2.691,15.863A1.567,1.567,0,0,0,257.5,170.8h5.149v7.284a2.652,2.652,0,0,0,2.652,2.652h1.16a2.654,2.654,0,0,0,2.569-1.992,2.652,2.652,0,0,0,2.569,1.992h1.16a2.652,2.652,0,0,0,2.652-2.652V170.8h5.152a1.566,1.566,0,0,0,1.566-1.567A1.5,1.5,0,0,0,282.1,168.91Z" transform="translate(-228.14 -122.62)">
-                                                        </path>
-                                                    </g>
-                                                </g>
+                                    <g transform="translate(-9494.008 -1366.901)">
+                                        <g transform="translate(9494.008 1366.901)">
+                                            <g transform="translate(0)">
+                                                <path className="a-icon2" d="M46.077,56.721a7.77,7.77,0,1,0-7.769-7.77A7.769,7.769,0,0,0,46.077,56.721Z" transform="translate(-34.807 -41.182)">
+                                                </path>
+                                                <path className="a-icon2" d="M37.255,138.967H20.017a2.652,2.652,0,0,0-2.644,2.855l1.223,15.9a2.651,2.651,0,0,0,.868,1.766L22.254,162v16.079a2.652,2.652,0,0,0,2.652,2.652h1.161a2.653,2.653,0,0,0,2.569-1.992,2.653,2.653,0,0,0,2.569,1.992h1.161a2.652,2.652,0,0,0,2.652-2.652V162l2.79-2.517a2.651,2.651,0,0,0,.868-1.766l1.223-15.9a2.652,2.652,0,0,0-2.643-2.855Z" transform="translate(-17.365 -122.62)">
+                                                </path>
+                                                <circle className="b-icon2" cx="7.77" cy="7.77" r="7.77" transform="translate(33.118 0)">
+                                                </circle>
+                                                <path className="b-icon2" d="M282.1,168.91l-2.676-15.762.872-11.326a2.653,2.653,0,0,0-2.644-2.855H260.409a2.652,2.652,0,0,0-2.644,2.855l.872,11.329-2.691,15.863A1.567,1.567,0,0,0,257.5,170.8h5.149v7.284a2.652,2.652,0,0,0,2.652,2.652h1.16a2.654,2.654,0,0,0,2.569-1.992,2.652,2.652,0,0,0,2.569,1.992h1.16a2.652,2.652,0,0,0,2.652-2.652V170.8h5.152a1.566,1.566,0,0,0,1.566-1.567A1.5,1.5,0,0,0,282.1,168.91Z" transform="translate(-228.14 -122.62)">
+                                                </path>
                                             </g>
-                                        </svg>
-                                    </div>
-                                    <div className="col-4">
-                                        <div className="critical-emp-div-2 text-left">
-                                            <b>{employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage}%</b>
-                                            <p>Critical Employee</p>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div className="col-4">
+                                <div className="critical-emp-div-2 text-left">
+                                    <b>{employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage}%</b>
+                                    <p>Critical Employee</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="emp-card-text">
+                            <div className="emp-card-description pt-3">
+                                <ul className="px-3">
+                                    <li className="d-flex align-items-center pb-3 border-bottom">
+                                        <div className="profile-icon iq-icon-box rounded-small text-center">
+                                            <div className="lgf-progress lgf-progress-small" data-percentage={employeeRisk.MaleGenderCritical && Math.ceil(employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage / 10) * 10}>
+                                                <span className="lgf-progress-left">
+                                                    <span className="lgf-progress-bar lgf-progress--blue">
+                                                    </span>
+                                                </span>
+                                                <span className="lgf-progress-right">
+                                                    <span className="lgf-progress-bar lgf-progress--blue">
+                                                    </span>
+                                                </span>
+                                                <div className="lgf-progress-value">
+                                                    <div className="lgf-progress-text">
+                                                        <h6>{employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage}%</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div className="emp-card-text">
-                                    <div className="emp-card-description pt-3">
-                                        <ul className="px-3">
-                                            <li className="d-flex align-items-center pb-3 border-bottom">
-                                                <div className="profile-icon iq-icon-box rounded-small text-center">
-                                                    <div className="lgf-progress lgf-progress-small" data-percentage={employeeRisk.MaleGenderCritical && Math.ceil(employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage / 10) * 10}>
-                                                        <span className="lgf-progress-left">
-                                                            <span className="lgf-progress-bar lgf-progress--blue">
-                                                            </span>
-                                                        </span>
-                                                        <span className="lgf-progress-right">
-                                                            <span className="lgf-progress-bar lgf-progress--blue">
-                                                            </span>
-                                                        </span>
-                                                        <div className="lgf-progress-value">
-                                                            <div className="lgf-progress-text">
-                                                                <h6>{employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage}%</h6>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="emp-loader-text">
-                                                    <b>
-                                                        {employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage}% Male Employees are at high risk, You need to focus on {employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.totalMaleCriticalHighRiskEmp} Employees on priority basis.
+                                        <div className="emp-loader-text">
+                                            <b>
+                                                {employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.maleCriticalHighRiskPercentage}% Male Employees are at high risk, You need to focus on {employeeRisk.MaleGenderCritical && employeeRisk.MaleGenderCritical.totalMaleCriticalHighRiskEmp} Employees on priority basis.
                               </b>
 
-                                                </div>
-                                            </li>
+                                        </div>
+                                    </li>
 
-                                            <li className="d-flex align-items-center py-3">
-                                                <div className="profile-icon iq-icon-box rounded-small text-center">
-                                                    <div className="lgf-progress lgf-progress-small" data-percentage={employeeRisk.femaleGenderCritical && Math.ceil(employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage / 10) * 10}>
-                                                        <span className="lgf-progress-left">
-                                                            <span className="lgf-progress-bar lgf-progress--orange">
-                                                            </span>
-                                                        </span>
-                                                        <span className="lgf-progress-right">
-                                                            <span className="lgf-progress-bar lgf-progress--orange">
-                                                            </span>
-                                                        </span>
-                                                        <div className="lgf-progress-value">
-                                                            <div className="lgf-progress-text">
-                                                                <h6>{employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage}%</h6>
-                                                            </div>
-                                                        </div>
+                                    <li className="d-flex align-items-center py-3">
+                                        <div className="profile-icon iq-icon-box rounded-small text-center">
+                                            <div className="lgf-progress lgf-progress-small" data-percentage={employeeRisk.femaleGenderCritical && Math.ceil(employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage / 10) * 10}>
+                                                <span className="lgf-progress-left">
+                                                    <span className="lgf-progress-bar lgf-progress--orange">
+                                                    </span>
+                                                </span>
+                                                <span className="lgf-progress-right">
+                                                    <span className="lgf-progress-bar lgf-progress--orange">
+                                                    </span>
+                                                </span>
+                                                <div className="lgf-progress-value">
+                                                    <div className="lgf-progress-text">
+                                                        <h6>{employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage}%</h6>
                                                     </div>
                                                 </div>
-                                                <div className="emp-loader-text">
-                                                    <b>
-                                                        {employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage}% Female Employees are at high risk, You need to focus on {employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.totalFemaleCriticalHighRiskEmp} Employees on priority basis.
+                                            </div>
+                                        </div>
+                                        <div className="emp-loader-text">
+                                            <b>
+                                                {employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.femaleCriticalHighRiskPercentage}% Female Employees are at high risk, You need to focus on {employeeRisk.femaleGenderCritical && employeeRisk.femaleGenderCritical.totalFemaleCriticalHighRiskEmp} Employees on priority basis.
                               </b>
 
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     )

@@ -59,7 +59,7 @@ const Login = (props) => {
                                 </p>
                             </div>
                             <div className="col-lg-6 mb-lg-0 mb-4 mt-lg-0 mt-4">
-                                <img src={process.env.PUBLIC_URL + 'images/login.png'} className="img-fluid w-80" alt="" />
+                                <img src={process.env.PUBLIC_URL + '/images/login.png'} className="img-fluid w-80" alt="" />
                             </div>
                         </div>
                     </div>

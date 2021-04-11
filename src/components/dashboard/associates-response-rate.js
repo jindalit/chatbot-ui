@@ -44,6 +44,7 @@ export default (props) => {
                 </h6>
                 </div>
             </div>
+            <span className='clickhere'>Click here to view</span>
             {data.length !== 0 &&
                 <ResponsiveContainer><AreaChart data={data}
                     margin={{ top: 20, right: 80, left: 20, bottom: 5 }}

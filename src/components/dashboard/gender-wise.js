@@ -13,22 +13,26 @@ export default (props) => {
 
             </div>
             {getGenderWise && <div className="card-body">
-                <div className="gender-section">
-                    <img src={process.env.PUBLIC_URL + "images/man.PNG"} />
-                    {getGenderWise.MaleGender && <div>
-                        {getGenderWise.MaleGender.mood}<br /><span>Mood</span><br /><br />
-                        {getGenderWise.MaleGender.progress}%<br /><span>Progress</span><br /><br />
-                        <span>Critical Employee</span><br />
-                        {getGenderWise.MaleGender.criticalEmployee}
-                    </div>
+                <div className="gender-section row">
+                    <div className='col-2'><img src={process.env.PUBLIC_URL + "/images/man.PNG"} /></div>
+                    {getGenderWise.MaleGender && <React.Fragment><div className='col-3'>
+                        {getGenderWise.MaleGender.mood}<span>Pulse</span></div>
+                        <div className='col-3'>
+                            {getGenderWise.MaleGender.progress}%<span>Progress</span></div>
+                        <div className='col-4'>
+                            {getGenderWise.MaleGender.criticalEmployee}<span>Critical Employee</span>
+                        </div>
+                    </React.Fragment>
                     }
-                    <img src={process.env.PUBLIC_URL + "images/woman.PNG"} />
-                    {getGenderWise.FemaleGender && <div>
-                        {getGenderWise.FemaleGender.mood}<br /><span>Mood</span><br /><br />
-                        {getGenderWise.FemaleGender.progress}%<br /><span>Progress</span><br /><br />
-                        <span>Critical Employee</span><br />
-                        {getGenderWise.FemaleGender.criticalEmployee}
-                    </div>
+                </div>
+                <div className="gender-section row">
+                    <div className='col-2'><img src={process.env.PUBLIC_URL + "/images/woman.PNG"} /></div>
+                    {getGenderWise.FemaleGender && <React.Fragment><div className='col-3'>
+                        {getGenderWise.FemaleGender.mood}<span>Pulse</span></div><div className='col-3'>
+                            {getGenderWise.FemaleGender.progress}%<span>Progress</span></div><div className='col-4'>
+                            {getGenderWise.FemaleGender.criticalEmployee}<span>Critical Employee</span>
+                        </div>
+                    </React.Fragment>
                     }
 
                 </div>

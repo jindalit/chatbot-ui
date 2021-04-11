@@ -48,7 +48,7 @@ export default (props) => {
                             <i class="ri-menu-3-line"></i>
                         </div>
                         <div class="avatar chat-user-profile m-0 mr-3">
-                            <img src={process.env.PUBLIC_URL + "images/chat-bot.png"} alt="avatar" class="avatar-50 " />
+                            <img src={process.env.PUBLIC_URL + "/images/chat-bot.png"} alt="avatar" class="avatar-50 " />
                             <span class="avatar-status"><i
                                 class="ri-checkbox-blank-circle-fill text-success"></i></span>
                         </div>
@@ -62,7 +62,7 @@ export default (props) => {
                     <div class="chat">
                         <div class="chat-user">
                             <a class="avatar m-0">
-                                <img src={process.env.PUBLIC_URL + "images/user.jpg"} alt="avatar" class="avatar-35 " />
+                                <img src={process.env.PUBLIC_URL + "/images/user.jpg"} alt="avatar" class="avatar-35 " />
                             </a>
                         </div>
                         <div class="chat-detail">
@@ -74,7 +74,7 @@ export default (props) => {
                     <div class="chat chat-left">
                         <div class="chat-user">
                             <a class="avatar m-0">
-                                <img src={process.env.PUBLIC_URL + "images/chat-bot.png"} alt="avatar" class="avatar-35 " />
+                                <img src={process.env.PUBLIC_URL + "/images/chat-bot.png"} alt="avatar" class="avatar-35 " />
                             </a>
                         </div>
                         <div class="chat-detail">

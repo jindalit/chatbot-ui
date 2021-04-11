@@ -26,7 +26,7 @@ export default () => {
         <ProtectedRoute path='/attrition' component={Attrition} />
         <ProtectedRoute path='/scorecard' component={Scorecard} />
         <Route path="*">
-          <img src={process.env.PUBLIC_URL + 'images/login.png'} className="img-fluid w-80" alt="" />
+          <img src={process.env.PUBLIC_URL + '/images/login.png'} className="img-fluid w-80" alt="" />
           No Match
             </Route>
       </Switch>

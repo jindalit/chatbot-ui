@@ -17,7 +17,7 @@ export default (props) => {
         let isExist = false
         let questionIndex = 0
         questions.map((item, index) => {
-            if (item.id === question.id) {
+            if (item.questionId === question.questionId) {
                 questionIndex = index
                 isExist = true
             }
@@ -28,6 +28,25 @@ export default (props) => {
             })
         } else {
             return questions[questionIndex].rating = rating
+        }
+    }
+    const handleComments = (e, question) => {
+        if (e.currentTarget.value !== "") {
+            let isExist = false
+            let questionIndex = 0
+            questions.map((item, index) => {
+                if (item.questionId === question.questionId) {
+                    questionIndex = index
+                    isExist = true
+                }
+            })
+            if (!isExist || questions.length === 0) {
+                return questions.push({
+                    ...question, comment: e.currentTarget.value
+                })
+            } else {
+                return questions[questionIndex].comment = e.currentTarget.value
+            }
         }
     }
     const submitQuestions = () => {
@@ -45,7 +64,7 @@ export default (props) => {
                         emptySymbol={['icon-emonji icon-angry', 'icon-emonji icon-bad', 'icon-emonji icon-ok', 'icon-emonji icon-happy', 'icon-emonji icon-great', 'icon-emonji icon-strongly-agree']}
                         fullSymbol={['icon-emonji icon-angry-full', 'icon-emonji icon-bad-full', 'icon-emonji icon-ok-full', 'icon-emonji icon-happy-full', 'icon-emonji icon-great-full', 'icon-emonji icon-strongly-agree-full']}
                     />
-                    {getSurveyName === 'Engagement' ? <textarea rows={1} style={{ width: '100%' }} /> : ''}
+                    {getSurveyName === 'Engagement' ? <textarea onBlur={(e) => handleComments(e, item)} rows={1} style={{ width: '100%' }} /> : ''}
                 </div>))
             }</div>
         <div className='text-center'>

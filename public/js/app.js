@@ -42,13 +42,13 @@ Index Of Script
 Index Of Script
 ----------------------------------------------*/
 
-(function(jQuery) {
+(function (jQuery) {
 
 
 
     "use strict";
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         /*---------------------------------------------------------------------
         Tooltip
@@ -76,11 +76,10 @@ Index Of Script
             }
         });
 
-
         /*---------------------------------------------------------------------
         Magnific Popup
         -----------------------------------------------------------------------*/
-        if(typeof $.fn.magnificPopup !== typeof undefined){
+        if (typeof $.fn.magnificPopup !== typeof undefined) {
             jQuery('.popup-gallery').magnificPopup({
                 delegate: 'a.popup-img',
                 type: 'image',
@@ -93,7 +92,7 @@ Index Of Script
                 },
                 image: {
                     tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-                    titleSrc: function(item) {
+                    titleSrc: function (item) {
                         return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
                     }
                 }
@@ -112,7 +111,7 @@ Index Of Script
         /*---------------------------------------------------------------------
         Ripple Effect
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', ".iq-waves-effect", function(e) {
+        jQuery(document).on('click', ".iq-waves-effect", function (e) {
             // Remove any old one
             jQuery('.ripple').remove();
             // Setup
@@ -146,11 +145,11 @@ Index Of Script
             }).addClass("rippleEffect");
         });
 
-       /*---------------------------------------------------------------------
-        Sidebar Widget
-        -----------------------------------------------------------------------*/
+        /*---------------------------------------------------------------------
+         Sidebar Widget
+         -----------------------------------------------------------------------*/
 
-        jQuery(document).on("click", '.iq-menu > li > a', function() {
+        jQuery(document).on("click", '.iq-menu > li > a', function () {
             jQuery('.iq-menu > li > a').parent().removeClass('active');
             jQuery(this).parent().addClass('active');
         });
@@ -167,7 +166,7 @@ Index Of Script
         /*---------------------------------------------------------------------
         FullScreen
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.iq-full-screen', function() {
+        jQuery(document).on('click', '.iq-full-screen', function () {
             let elem = jQuery(this);
             if (!document.fullscreenElement &&
                 !document.mozFullScreenElement && // Mozilla
@@ -212,9 +211,9 @@ Index Of Script
             const counterUp = window.counterUp["default"]
             const $counters = $(".counter");
             $counters.each(function (ignore, counter) {
-                var waypoint = new Waypoint( {
+                var waypoint = new Waypoint({
                     element: $(this),
-                    handler: function() {
+                    handler: function () {
                         counterUp(counter, {
                             duration: 1000,
                             delay: 10
@@ -222,7 +221,7 @@ Index Of Script
                         this.destroy();
                     },
                     offset: 'bottom-in-view',
-                } );
+                });
             });
         }
 
@@ -230,15 +229,15 @@ Index Of Script
         /*---------------------------------------------------------------------
         Progress Bar
         -----------------------------------------------------------------------*/
-        jQuery('.iq-progress-bar > span').each(function() {
+        jQuery('.iq-progress-bar > span').each(function () {
             let progressBar = jQuery(this);
             let width = jQuery(this).data('percent');
             progressBar.css({
                 'transition': 'width 2s'
             });
 
-            setTimeout(function() {
-                progressBar.appear(function() {
+            setTimeout(function () {
+                progressBar.appear(function () {
                     progressBar.css('width', width + '%');
                 });
             }, 100);
@@ -262,18 +261,22 @@ Index Of Script
         /*---------------------------------------------------------------------
         Page Menu
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.wrapper-menu', function() {
+        jQuery(document).on('click', '.wrapper-menu', function () {
             jQuery(this).toggleClass('open');
         });
 
-        jQuery(document).on('click', ".wrapper-menu", function() {
+        jQuery(document).on('click', ".wrapper-menu", function () {
             jQuery("body").toggleClass("sidebar-main");
         });
 
+        jQuery(document).on('load', function () {
+            console.log(jQuery(body));
+            jQuery(body).addClass('sidebar-main');
+        });
 
-      /*---------------------------------------------------------------------
-       Close  navbar Toggle
-       -----------------------------------------------------------------------*/
+        /*---------------------------------------------------------------------
+         Close  navbar Toggle
+         -----------------------------------------------------------------------*/
 
         jQuery('.close-toggle').on('click', function () {
             jQuery('.h-collapse.navbar-collapse').collapse('hide');
@@ -345,18 +348,18 @@ Index Of Script
         /*---------------------------------------------------------------------
         user toggle
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.iq-user-toggle', function() {
+        jQuery(document).on('click', '.iq-user-toggle', function () {
             jQuery(this).parent().addClass('show-data');
         });
 
-        jQuery(document).on('click', ".close-data", function() {
+        jQuery(document).on('click', ".close-data", function () {
             jQuery('.iq-user-toggle').parent().removeClass('show-data');
         });
-        jQuery(document).on("click", function(event){
-        var $trigger = jQuery(".iq-user-toggle");
-        if($trigger !== event.target && !$trigger.has(event.target).length){
-            jQuery(".iq-user-toggle").parent().removeClass('show-data');
-        }
+        jQuery(document).on("click", function (event) {
+            var $trigger = jQuery(".iq-user-toggle");
+            if ($trigger !== event.target && !$trigger.has(event.target).length) {
+                jQuery(".iq-user-toggle").parent().removeClass('show-data');
+            }
         });
         /*-------hide profile when scrolling--------*/
         jQuery(window).scroll(function () {
@@ -371,11 +374,11 @@ Index Of Script
             Scrollbar.init(document.querySelector('.data-scrollbar'), { continuousScrolling: false });
         }
 
-        
+
         /*---------------------------------------------------------------------
         Data tables
         -----------------------------------------------------------------------*/
-        if($.fn.DataTable){
+        if ($.fn.DataTable) {
             $('.data-table').DataTable();
         }
 
@@ -387,12 +390,12 @@ Index Of Script
         -----------------------------------------------------------------------*/
 
         // Example starter JavaScript for disabling form submissions if there are invalid fields
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
             var forms = document.getElementsByClassName('needs-validation');
             // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
                     if (form.checkValidity() === false) {
                         event.preventDefault();
                         event.stopPropagation();
@@ -402,44 +405,44 @@ Index Of Script
             });
         }, false);
 
-      /*---------------------------------------------------------------------
-       Active Class for Pricing Table
-       -----------------------------------------------------------------------*/
-      jQuery("#my-table tr th").click(function () {
-        jQuery('#my-table tr th').children().removeClass('active');
-        jQuery(this).children().addClass('active');
-        jQuery("#my-table td").each(function () {
-          if (jQuery(this).hasClass('active')) {
-            jQuery(this).removeClass('active')
-          }
+        /*---------------------------------------------------------------------
+         Active Class for Pricing Table
+         -----------------------------------------------------------------------*/
+        jQuery("#my-table tr th").click(function () {
+            jQuery('#my-table tr th').children().removeClass('active');
+            jQuery(this).children().addClass('active');
+            jQuery("#my-table td").each(function () {
+                if (jQuery(this).hasClass('active')) {
+                    jQuery(this).removeClass('active')
+                }
+            });
+            var col = jQuery(this).index();
+            jQuery("#my-table tr td:nth-child(" + parseInt(col + 1) + ")").addClass('active');
         });
-        var col = jQuery(this).index();
-        jQuery("#my-table tr td:nth-child(" + parseInt(col + 1) + ")").addClass('active');
-      });
 
         /*------------------------------------------------------------------
         Flatpicker
         * -----------------------------------------------------------------*/
-      if (jQuery('.date-input').hasClass('basicFlatpickr')) {
-          jQuery('.basicFlatpickr').flatpickr();
-          jQuery('#inputTime').flatpickr({
-            enableTime: true,
-            noCalendar: true,
-            dateFormat: "H:i",
-          });
-          jQuery('#inputDatetime').flatpickr({
-            enableTime: true
-          });
-          jQuery('#inputWeek').flatpickr({
-            weekNumbers: true
-          });
-          jQuery("#inline-date").flatpickr({
-              inline: true
-          });
-          jQuery("#inline-date1").flatpickr({
-              inline: true
-          });
-      }
+        if (jQuery('.date-input').hasClass('basicFlatpickr')) {
+            jQuery('.basicFlatpickr').flatpickr();
+            jQuery('#inputTime').flatpickr({
+                enableTime: true,
+                noCalendar: true,
+                dateFormat: "H:i",
+            });
+            jQuery('#inputDatetime').flatpickr({
+                enableTime: true
+            });
+            jQuery('#inputWeek').flatpickr({
+                weekNumbers: true
+            });
+            jQuery("#inline-date").flatpickr({
+                inline: true
+            });
+            jQuery("#inline-date1").flatpickr({
+                inline: true
+            });
+        }
 
         /*---------------------------------------------------------------------
         Scrollbar
@@ -455,73 +458,68 @@ Index Of Script
 
         jQuery('.data-scrollbar').each(function () {
             var attr = $(this).attr('data-scroll');
-            if (typeof attr !== typeof undefined && attr !== false){
-            let Scrollbar = window.Scrollbar;
-            var a = jQuery(this).data('scroll');
-            Scrollbar.init(document.querySelector('div[data-scroll= "' + a + '"]'));
+            if (typeof attr !== typeof undefined && attr !== false) {
+                let Scrollbar = window.Scrollbar;
+                var a = jQuery(this).data('scroll');
+                Scrollbar.init(document.querySelector('div[data-scroll= "' + a + '"]'));
             }
         });
 
 
-         /*---------------------------------------------------------------------
-           Datatables
-        -----------------------------------------------------------------------*/
-        if(jQuery('.data-tables').length)
-        {
-          $('.data-tables').DataTable();
+        /*---------------------------------------------------------------------
+          Datatables
+       -----------------------------------------------------------------------*/
+        if (jQuery('.data-tables').length) {
+            $('.data-tables').DataTable();
         }
 
 
-      /*---------------------------------------------------------------------
-      image-upload
-      -----------------------------------------------------------------------*/
+        /*---------------------------------------------------------------------
+        image-upload
+        -----------------------------------------------------------------------*/
 
-      $('.form_gallery-upload').on('change', function() {
-          var length = $(this).get(0).files.length;
-          var galleryLabel  = $(this).attr('data-name');
+        $('.form_gallery-upload').on('change', function () {
+            var length = $(this).get(0).files.length;
+            var galleryLabel = $(this).attr('data-name');
 
-          if( length > 1 ){
-            $(galleryLabel).text(length + " files selected");
-          } else {
-            $(galleryLabel).text($(this)[0].files[0].name);
-          }
+            if (length > 1) {
+                $(galleryLabel).text(length + " files selected");
+            } else {
+                $(galleryLabel).text($(this)[0].files[0].name);
+            }
         });
 
-    /*---------------------------------------------------------------------
-        video
-      -----------------------------------------------------------------------*/
-      $(document).ready(function(){
-      $('.form_video-upload input').change(function () {
-        $('.form_video-upload p').text(this.files.length + " file(s) selected");
-      });
-    });
+        /*---------------------------------------------------------------------
+            video
+          -----------------------------------------------------------------------*/
+        $(document).ready(function () {
+            $('.form_video-upload input').change(function () {
+                $('.form_video-upload p').text(this.files.length + " file(s) selected");
+            });
+        });
 
 
         /*---------------------------------------------------------------------
         Button
         -----------------------------------------------------------------------*/
 
-        jQuery('.qty-btn').on('click',function(){
-          var id = jQuery(this).attr('id');
+        jQuery('.qty-btn').on('click', function () {
+            var id = jQuery(this).attr('id');
 
-          var val = parseInt(jQuery('#quantity').val());
+            var val = parseInt(jQuery('#quantity').val());
 
-          if(id == 'btn-minus')
-          {
-            if(val != 0)
-            {
-              jQuery('#quantity').val(val-1);
+            if (id == 'btn-minus') {
+                if (val != 0) {
+                    jQuery('#quantity').val(val - 1);
+                }
+                else {
+                    jQuery('#quantity').val(0);
+                }
+
             }
-            else
-            {
-              jQuery('#quantity').val(0);
+            else {
+                jQuery('#quantity').val(val + 1);
             }
-
-          }
-          else
-          {
-            jQuery('#quantity').val(val+1);
-          }
         });
         if ($.fn.select2 !== undefined) {
             $("#single").select2({

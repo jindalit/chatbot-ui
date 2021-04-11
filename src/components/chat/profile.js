@@ -7,7 +7,7 @@ export default (props) => {
         <React.Fragment>
             <div className="d-flex align-items-center">
                 <div className="chat-profile mr-3">
-                    <img src={process.env.PUBLIC_URL + "images/user.jpg"} alt="chat-user" className="avatar-60 " />
+                    <img src={process.env.PUBLIC_URL + "/images/user.jpg"} alt="chat-user" className="avatar-60 " />
                 </div>
                 <div className="chat-caption">
                     <h5 className="mb-0">{user.firstName + ' ' + user.lastName}</h5>
@@ -20,7 +20,7 @@ export default (props) => {
                     <button type="submit" class="close-popup p-3"><i class="ri-close-fill"></i></button>
                     <div class="user text-center mb-4">
                         <a class="avatar m-0">
-                            <img src={process.env.PUBLIC_URL + "images/user.jpg"} class="avatar-100" alt="avatar" />
+                            <img src={process.env.PUBLIC_URL + "/images/user.jpg"} class="avatar-100" alt="avatar" />
                         </a>
                         <div class="user-name mt-4">
                             <h4>{user.firstName + ' ' + user.lastName}</h4>
